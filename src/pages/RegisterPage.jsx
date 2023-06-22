@@ -39,7 +39,7 @@ const RegisterPage = () => {
       // if (inputState.zipCode == "") {
       //   inputState.zipCode = null;
       // }
-      await axios.post("auth/users", {
+      await axios.post("/users", {
         firstName: inputState.firstName,
         lastName: inputState.lastName,
         phone: inputState.phone,
@@ -53,7 +53,7 @@ const RegisterPage = () => {
         zipCode: inputState.zipCode,
         biz: inputState.biz,
       });
-      navigate(ROUTES.LOGIN);
+      // navigate(ROUTES.LOGIN);
     } catch (err) {
       toast.error("There is an error," + "" + err.response.data);
     }
@@ -104,10 +104,10 @@ const RegisterPage = () => {
 
   return (
     <Container>
-        <h1>register</h1>
+      <h1>register</h1>
       <Form>
-      <Col md={{ span: 6, offset: 3 }} xs={12}>
-        <Row className="mb-3">
+        <Col md={{ span: 6, offset: 3 }} xs={12}>
+          <Row className="mb-3">
             {keys.map((item) => (
               <RegisterCom
                 key={item}
@@ -117,47 +117,31 @@ const RegisterPage = () => {
                 inputsErrorState={inputsErrorState}
               />
             ))}
-             </Row>
-          </Col>
-       
-
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label></Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label></Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
-        </Form.Group>
-
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
-            <Form.Control />
+          </Row>
+          <Form.Group className="mb-3" id="formGridCheckbox">
+            <Form.Check
+              type="checkbox"
+              id="biz"
+              label="I want to receive updates and exclusive offers, plus a 5% discount on every order"
+              onClick={handleBizChange}
+            />
           </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>State</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Select>
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control />
-          </Form.Group>
-        </Row>
-
-        <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+          <Row className="mb-3">
+            <Button variant="primary" type="submit" href={ROUTES.HOME}>
+              CANCEL
+            </Button>
+          </Row>
+          <Row className="mb-3">
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={handeleBtnClick}
+              disabled={inputsErrorState !== null}
+            >
+              Sign Up
+            </Button>
+          </Row>
+        </Col>
       </Form>
     </Container>
   );

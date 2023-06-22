@@ -35,23 +35,28 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             /*   placeholder={item} */
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
-            isInvalid= {inputState[item] && inputsErrorState[item]}
-            isValid={inputState[item] && !inputsErrorState[item]}
+            // isInvalid={inputState[item] && inputsErrorState[item]}
+            // isValid={inputState[item] && !inputsErrorState[item]}
           />
-            {inputsErrorState && inputsErrorState[item] && (
-          <Form.Control.Feedback type="invalid" tooltip>
-             {/* {inputsErrorState[item].map((item) => (
-            <div key={"{item}-errors" + item}>{item}</div>
-          ))} */} {inputsErrorState[item]}
-          </Form.Control.Feedback>
-           )}
+          {inputsErrorState && inputsErrorState[item] && (
+            <Form.Control.Feedback type="invalid" tooltip>
+              {inputsErrorState[item].map((item) => (
+                <div key={"{item}-errors" + item}>{item}</div>
+              ))}
+              {/* {inputsErrorState[item]} */}
+            </Form.Control.Feedback>
+          )}
         </FloatingLabel>
       </Form.Group>
     </Col>
   ) : (
     <Col xs={12} md={6}>
       <Form.Group as={Col} controlId={item}>
-        <FloatingLabel controlId="validationFormik05" label={item} className="mb-3">
+        <FloatingLabel
+          controlId="validationFormik05"
+          label={item}
+          className="mb-3"
+        >
           <Form.Control
             name={item}
             id={item}
@@ -62,15 +67,16 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
             // isValid={inputState[item] && inputsErrorState[item]}
-            isValid={inputState[item] && !inputsErrorState[item]}
+            // isValid={inputState[item] && !inputsErrorState[item]}
           />
-           {inputsErrorState && inputsErrorState[item] && (
-          <Form.Control.Feedback type="invalid">
-             {/* {inputsErrorState[item].map((item) => (
+          {inputsErrorState && inputsErrorState[item] && (
+            <Form.Control.Feedback type="invalid">
+              {/* {inputsErrorState[item].map((item) => (
             <div key={"{item}-errors" + item}>{item}</div>
-          ))} */}  {inputsErrorState[item]}
-          </Form.Control.Feedback>
-           )}
+          ))} */}{" "}
+              {inputsErrorState[item]}
+            </Form.Control.Feedback>
+          )}
         </FloatingLabel>
       </Form.Group>
     </Col>
