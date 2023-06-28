@@ -44,7 +44,7 @@ const RegisterPage = () => {
       if (inputState.imageAlt == "") {
         inputState.imageAlt = "yellow fluffy chickens";
       }
-      await axios.post("/auth/users", {
+      await axios.post("/users", {
        firstName: inputState.firstName,
         lastName: inputState.lastName,
         phone: inputState.phone,
@@ -61,8 +61,8 @@ const RegisterPage = () => {
       });
   navigate(ROUTES.LOGIN); 
     } catch (err) {
-      toast.error("login error"+""+ err.response.data); 
-      console.log(err);
+
+
     }
  
   };

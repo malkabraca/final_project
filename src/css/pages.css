@@ -32,20 +32,13 @@
   font-size: 5em;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-/* chani */
-/* .carousel-image {
+
+.carousel-image {
   height: 20rem;
   width: 100%;
-  object-fit: contain; */
-  /*   object-fit: cover; */
-  /* object-position: center;
-} */
-.carousel-image {
-  height: 40rem;
-  width: 100%;
   /* object-fit: contain; */
-  object-fit: cover;
-  object-position: center;
+  /*   object-fit: cover; */
+  /* object-position: center;*/
 }
 
 .carousel {
@@ -61,7 +54,7 @@
   width: 18rem;
 }
 .buttonhome {
-   margin-top: 5%;
+   margin-top: 40%;
    font-weight:600;
     font-size: 18px;
     margin-left: 3%;
@@ -69,16 +62,4 @@
     border-radius: 50px;
   border: 5px solid rgb(252, 215, 94);
    background-color: rgba(252, 215, 94, 0.37);
-}
-
-.abothome{
-  text-align: center;
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
-.abothome p {
-  text-align: justify;
-  font-size: 1.2em;
-  color: aliceblue;
 }
