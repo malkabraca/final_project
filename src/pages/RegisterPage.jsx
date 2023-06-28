@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -10,6 +10,7 @@ import validateRegisterSchema from "../validation/registerValidation";
 import axios from "axios";
 import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
+import "../css/pages.css"
 
 const RegisterPage = () => {
   const [inputState, setInputState] = useState({
@@ -32,15 +33,19 @@ const RegisterPage = () => {
     try {
       const joiResponse = validateRegisterSchema(inputState);
       setinputsErrorState(joiResponse);
-
+ toast.error("Invalid user information");
       if (joiResponse) {
         return;
       }
-      // if (inputState.zipCode == "") {
-      //   inputState.zipCode = null;
-      // }
-      await axios.post("/users", {
-        firstName: inputState.firstName,
+      if (inputState.imageUrl == "") {
+        inputState.imageUrl =
+          "https://cdn.pixabay.com/photo/2020/04/07/17/01/chicks-5014152_960_720.jpg";
+      }
+      if (inputState.imageAlt == "") {
+        inputState.imageAlt = "yellow fluffy chickens";
+      }
+      await axios.post("/auth/users", {
+       firstName: inputState.firstName,
         lastName: inputState.lastName,
         phone: inputState.phone,
         email: inputState.email,
@@ -52,12 +57,18 @@ const RegisterPage = () => {
         houseNumber: inputState.houseNumber,
         zipCode: inputState.zipCode,
         biz: inputState.biz,
+         
       });
-      // navigate(ROUTES.LOGIN);
+  navigate(ROUTES.LOGIN); 
     } catch (err) {
-      toast.error("There is an error," + "" + err.response.data);
+      toast.error("login error"+""+ err.response.data); 
+      console.log(err);
     }
+ 
   };
+   const cancel = () => {
+     navigate(ROUTES.HOME);
+   };
   const handleInputChange = (ev) => {
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
@@ -70,41 +81,12 @@ const RegisterPage = () => {
     newInputState["biz"] = ev.target.checked;
     setInputState(newInputState);
   };
-  // const resetForm = () => {
-  //   let newInputState = JSON.parse(JSON.stringify(inputState));
-  //   newInputState = {
-  //     imageUrl: "",
-  //     imageAlt: "",
-  //     firstName: "",
-  //     middleName: "",
-  //     lastName: "",
-  //     phone: "",
-  //     email: "",
-  //     password: "",
-  //     state: "",
-  //     country: "",
-  //     city: "",
-  //     street: "",
-  //     houseNumber: "",
-  //     zipCode: "",
-  //     biz: false,
-  //   };
-  //   setInputState(newInputState);
-  //   const joiResponse = validateRegisterSchema(inputState);
-  //   if (!joiResponse) {
-  //     return;
-  //   }
-  //   let newjoiResponse = JSON.parse(JSON.stringify(joiResponse));
-  //   Object.keys(newjoiResponse).forEach((index) => {
-  //     newjoiResponse[index] = "";
-  //   });
-  //   setinputsErrorState(newjoiResponse);
-  // };
+  
   const keys = Object.keys(inputState);
 
   return (
     <Container>
-      <h1>register</h1>
+      <h1 className="title">register</h1>
       <Form>
         <Col md={{ span: 6, offset: 3 }} xs={12}>
           <Row className="mb-3">
@@ -122,21 +104,27 @@ const RegisterPage = () => {
             <Form.Check
               type="checkbox"
               id="biz"
+              className="biz"
               label="I want to receive updates and exclusive offers, plus a 5% discount on every order"
               onClick={handleBizChange}
             />
           </Form.Group>
           <Row className="mb-3">
-            <Button variant="primary" type="submit" href={ROUTES.HOME}>
+            <Button
+              variant="warning"
+              type="submit"
+              onClick={cancel}
+              className="colinput"
+            >
               CANCEL
             </Button>
           </Row>
           <Row className="mb-3">
             <Button
-              variant="primary"
-              type="submit"
+              className="colinput"
+              variant="warning"
               onClick={handeleBtnClick}
-              disabled={inputsErrorState !== null}
+              /* disabled={inputsErrorState !== null}  */
             >
               Sign Up
             </Button>

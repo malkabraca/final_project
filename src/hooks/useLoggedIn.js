@@ -10,13 +10,10 @@ const useLoggedIn = () => {
       if (!token) {
         return;
       }
-      await axios.get("/users/userInfo");
+      /* await axios.get("/users/login");
       const payload = jwt_decode(token);
-      dispatch(authActions.login(payload));
-    } catch (err) {
-      //server error
-      //invalid token
-    }
+      dispatch(authActions.login(payload)); */
+    } catch (err) {}
   };
 };
 

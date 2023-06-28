@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./App.css";
+import "../src/css/App.css";
 import Router from "./routes/Router";
 import { useSelector } from "react-redux";
 import useLoggedIn from "./hooks/useLoggedIn";
-import Navbarpage from "./components/Navbar"
+import Navbarpage from "./components/Navbar";
 import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
-
 
 const light = {
   palette: {
@@ -39,8 +38,8 @@ function App() {
     (bigPie) => bigPie.darkThemeSlice.isDarkTheme
   );
   return (
-    // <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
-   <Container>
+    /* <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}> */
+    <div>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -53,15 +52,18 @@ function App() {
         pauseOnHover
         theme="colored"
       />
-        <header>
-          <Navbarpage />
-        </header>
-        {/* <main>{isLoading ? <CircularProgress /> : <Router />}</main> */}
-        <main><Router /></main>
-        <Footer />
-        </Container>
-  );
 
+      <header>
+        <Navbarpage />
+      </header>
+
+      <main>
+        <Router />
+      </main>
+      <Footer />
+    </div>
+    /* </ThemeProvider>  */
+  );
 }
 
 export default App;
