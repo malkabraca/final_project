@@ -21,7 +21,7 @@ const PopupExample = () => {
   const [inputState, setInputState] = useState({
     name: "",
     phone: "",
-    email:"",
+    email: "",
     city: "",
     street: "",
     houseNumber: "",
@@ -33,6 +33,8 @@ const PopupExample = () => {
   // console.log(inputsErrorState);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  let OrderNumber;
+
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateOrders(inputState);
@@ -52,7 +54,7 @@ const PopupExample = () => {
       await axios.post("/orders", {
         name: inputState.name,
         phone: inputState.phone,
-        email:inputState.email,
+        email: inputState.email,
         city: inputState.city,
         street: inputState.street,
         houseNumber: inputState.houseNumber,

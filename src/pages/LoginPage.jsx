@@ -29,7 +29,7 @@ const LoginPage = () => {
        
         return;
       }
-      const { data } = await axios.post("/users/login", inputState);
+      const { data } = await axios.post("auth/users/login", inputState);
       localStorage.setItem("token", data.token);
       loggedIn();
       navigate(ROUTES.HOME); 

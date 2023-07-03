@@ -22,6 +22,8 @@ import axios from "axios";
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
+  const [orderIdMenu, setOrderIdMenu] = useState(null);
+  const [cardrIdMenu, setCardIdMenu] = useState({card_id:"649ab96775cadb77fbffba05"});
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -94,36 +96,36 @@ const MenuPage = () => {
     navigate(`/infor/${id}`);
   };
   if (!cardsArr) {
-    return  <Spinner animation="border" role="status"></Spinner>
+    return <Spinner animation="border" role="status"></Spinner>;
   }
   const deleteHome = () => {};
 
-  // const card = [
-  //   {
-  //     title: "card1",
-  //     description: "Create a first card",
-  //     imageUrl:
-  //       "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
-  //     imageAlt: "doll",
-  //     price: "150",
-  //   },
-  //   {
-  //     title: "card2",
-  //     description: "Create a first card",
-  //     imageUrl:
-  //       "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
-  //     imageAlt: "doll",
-  //     price: "100",
-  //   },
-  //   {
-  //     title: "card3",
-  //     description: "Create a first card",
-  //     imageUrl:
-  //       "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
-  //     imageAlt: "doll",
-  //     price: "50",
-  //   },
-  // ];
+  const useridorder = jwt_decode(localStorage.token)._id;
+  // console.log(useridorder);
+
+  const withdrawalOfOrderId = async (id) => {
+    try {
+      const order = await axios.get("/orders/my-order-findOne/" + id);
+      const orderId = order.data;
+      setOrderIdMenu(orderId);
+      console.log(orderIdMenu);
+    } catch (err) {
+      toast.error(err.response._id);
+    }
+  };
+// const bodyid = [{card_id:"649ab96775cadb77fbffba05"}]
+  const handleAddToOrder = async (id) => {
+    try {
+      await axios.patch("/orders/menuOrder/" + id,cardrIdMenu);
+      console.log(cardrIdMenu);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
+
+  withdrawalOfOrderId(useridorder);
+
+  handleAddToOrder(orderIdMenu);
   return (
     <Container>
       <h1 className="title"> menu</h1>
@@ -131,11 +133,13 @@ const MenuPage = () => {
         {cardsArr.map((item) => (
           <CardMenu
             key={item._id + Date.now()}
+            id={item._id}
             imageUrl={item.imageUrl}
-            imageAlt ={item.imageAlt}
+            imageAlt={item.imageAlt}
             title={item.title}
             description={item.description}
             price={item.price}
+            // onClick={handleAddToOrder}
           />
         ))}
       </Row>
