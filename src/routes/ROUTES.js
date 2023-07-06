@@ -1,13 +1,13 @@
 const ROUTES = {
   HOME: "/home",
-   /* FAKEHOME: "/home", */
   REGISTER: "/register",
   LOGIN: "/login",
   MENU: "/menu",
+  CREATE:"/creat",
+  // EDIT:"/edit",
   //   PROFILE: "/profile",
   //   LOGOUT: "/logout",
   //   ABOUT:"/about",
-  //   CREATE:"/creat",
   //   FAVCARD:"/favCards"
 };
 

@@ -54,6 +54,14 @@ const Navbars = () => {
             >
               register
             </Nav.Link>
+            <Nav.Link
+              id="nav"
+              href={ROUTES.MENU}
+              className={activeLink === "Link" ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              MENU
+            </Nav.Link>
           </Nav>
 
           {/*  <Nav

@@ -9,7 +9,7 @@ import Router from "./routes/Router";
 import { useSelector } from "react-redux";
 import useLoggedIn from "./hooks/useLoggedIn";
 import Navbarpage from "./components/Navbar";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Footer from "./components/Footer";
 
 const light = {
@@ -56,10 +56,10 @@ function App() {
       <header>
         <Navbarpage />
       </header>
-
-      <main>
+      <main>{isLoading ? <Spinner animation="border" variant="warning" /> : <Router />}</main>
+      {/* <main>
         <Router />
-      </main>
+      </main> */}
       <Footer />
     </div>
     /* </ThemeProvider>  */

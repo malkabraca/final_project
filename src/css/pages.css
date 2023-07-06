@@ -166,3 +166,15 @@
     justify-content: center;
   }
 }
+.containercreat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Adjust this value to control the vertical alignment */
+}
+.imagecreat {
+/*  margin-left: 30%; */
+ border: 5px solid rgb(252, 215, 94);
+  height: 215px;
+  width: 300px;
+  margin-bottom: 2%;}

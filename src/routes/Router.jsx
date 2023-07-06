@@ -4,7 +4,8 @@ import ROUTES from "./ROUTES";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import MenuPage from "../pages/MenuPage";
-// import EditCardPage from "../pages/EditCardPage";
+import EditCardPage from "../pages/EditCardPage";
+import CreateCardPage from "../pages/CreateCardPage";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
 // import ProtectedRoute from "../components/ProtectedRoute";
@@ -28,7 +29,11 @@ const Router = () => {
       <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.MENU} element={<MenuPage />} />
+      <Route path="/edit/:id" element={<EditCardPage />} />
+      <Route path={ROUTES.CREATE} element={<CreateCardPage />}/>
     </Routes>
+
+
     //       <Route path={ROUTES.ABOUT} element={<About />} />
     //       <Route  path="infor/:id" element={<InformationCard />} />
 
@@ -92,7 +97,7 @@ const Router = () => {
     //       </Route>
 
     //       <Route path="*" element={<h1>404</h1>} />
-    //     </Routes>
+        // </Routes>
   );
 };
 

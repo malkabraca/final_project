@@ -3,7 +3,6 @@ import { Form, InputGroup } from "react-bootstrap"
 const PopuoFrom =({ item, inputState, inputsErrorState, onChange })=>{
   if (item === "takeAway") return;
 return(
- 
     <InputGroup size="sm" className="mb-3">
             <InputGroup.Text>{item}</InputGroup.Text>
             <Form.Control
