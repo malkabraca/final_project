@@ -31,8 +31,9 @@ const PopupExample = () => {
   // console.log(inputState);
   const [inputsErrorState, setInputsErrorState] = useState(null);
   // console.log(inputsErrorState);
-  const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+ 
   let OrderNumber;
 
   const handeleBtnClick = async (ev) => {
@@ -63,6 +64,7 @@ const PopupExample = () => {
       });
       toast.success("The registration was done successfully");
       handleClose();
+      navigate(ROUTES.MENU); 
     } catch (err) {
       console.log(err);
       toast.error("Invalid user information");

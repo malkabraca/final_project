@@ -11,10 +11,20 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import ROUTES from "../routes/ROUTES";
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { darkThemeActions } from "../store/darkTheme";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
+  const dispatch = useDispatch();
+  const isDarkTheme = useSelector(
+    (bigPie) => bigPie.darkThemeSlice.isDarkTheme
+  );
 
+  const changeTheme = () => {
+    dispatch(darkThemeActions.changeTheme());
+  };
   const handleLinkClick = (event) => {
     setActiveLink(event.target.innerText);
   };
@@ -82,6 +92,12 @@ const Navbars = () => {
               <Nav.Link eventKey="link-2">Link</Nav.Link>
             </Nav.Item>
           </Nav>*/}
+           <div sx={{ display: { xs: "none", md: "inline" } }}>
+              {isDarkTheme ? "Dark" : "Light"} Mode
+            </div>
+            <Button  onClick={changeTheme}>
+              {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
+            </Button>
           <Form className="d-flex">
             <Form.Control
               type="search"

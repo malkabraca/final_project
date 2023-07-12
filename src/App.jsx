@@ -11,18 +11,21 @@ import useLoggedIn from "./hooks/useLoggedIn";
 import Navbarpage from "./components/Navbar";
 import { Container, Spinner } from "react-bootstrap";
 import Footer from "./components/Footer";
+import { ThemeProvider } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const light = {
-  palette: {
-    mode: "light",
-  },
-};
+// const light = {
+//   palette: {
+//     mode: "light",
+//   },
+// };
 
-const dark = {
-  palette: {
-    mode: "dark",
-  },
-};
+// const dark = {
+//   palette: {
+//     mode: "dark",
+//   },
+// };
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,32 +40,40 @@ function App() {
   const isDarkTheme = useSelector(
     (bigPie) => bigPie.darkThemeSlice.isDarkTheme
   );
+  const theme = {
+    primaryColor: isDarkTheme ? 'var(--secondary-color)' : 'var(--primary-color)',
+    // Add other theme properties here
+  };
   return (
-    /* <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}> */
-    <div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable={false}
-        pauseOnHover
-        theme="colored"
-      />
+    // <ThemeProvider theme={isDarkTheme ?  'var(--secondary-color)'  : 'var(--primary-color)' }>
+    <ThemeProvider theme={theme}>
+      <div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover
+          theme="colored"
+        />
 
-      <header>
-        <Navbarpage />
-      </header>
-      <main>{isLoading ? <Spinner animation="border" variant="warning" /> : <Router />}</main>
-      {/* <main>
-        <Router />
-      </main> */}
-      <Footer />
-    </div>
-    /* </ThemeProvider>  */
+        <header>
+          <Navbarpage />
+        </header>
+        <main>
+          {isLoading ? (
+            <Spinner animation="border" variant="warning" />
+          ) : (
+            <Router />
+          )}
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

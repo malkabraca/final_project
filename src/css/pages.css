@@ -147,6 +147,10 @@
   color: aliceblue;
 }
 
+.filled {
+  background-color: rgba(252, 215, 94, 1);
+}
+
 @media (max-width: 991px) {
 }
 @media (max-width: 768px) {
@@ -178,3 +182,39 @@
   height: 215px;
   width: 300px;
   margin-bottom: 2%;}
+
+  .buttenDelEdiMenu{
+    width:3em;
+  height:3em;
+  margin: 2%;
+  border-radius: 50%;
+  display: flexbox;
+ 
+   }
+   .buttonCreatCom{
+    width:4em;
+    height:4em;
+    border-radius: 50%;
+    margin-left: 90%;
+    margin-bottom: 10%;
+     }
+     
+     .buttenAddMenu {
+      /*  background-color: rgba(252, 215, 94, 0); */
+       width: 3em;
+       height: 2em;
+       margin: 1%;
+       display: flexbox;
+     }
+     .buttenCompletionOfAnOrder{
+      background-color: rgba(252, 215, 94, 0);
+    width: 30em;
+    color: aliceblue;
+    margin: 2em;
+  }
+
+
+  :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+  }

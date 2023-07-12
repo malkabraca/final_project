@@ -2,7 +2,7 @@ import { Button, Container } from "react-bootstrap";
 import {  useNavigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 
-const CreatCom = ({ canCreate }) => {
+const ButtonCreatCom = ({ canCreate }) => {
   const navigate = useNavigate();
 
   const btnCraet = () => {
@@ -11,7 +11,7 @@ const CreatCom = ({ canCreate }) => {
   return (
     <Container>
       {canCreate ? (
-        <Button variant="warning" onClick={btnCraet}>
+        <Button className="buttonCreatCom" variant="warning" onClick={btnCraet}>
           +
         </Button>
       ) : (
@@ -21,4 +21,4 @@ const CreatCom = ({ canCreate }) => {
   );
 };
 
-export default CreatCom;
+export default ButtonCreatCom;
