@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupExample from "../components/popupOrder";
+import PaymentForm from "../components/PagsFromPaymentOrder ";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const HomePage = () => {
         />
        
         </div>
+        <PaymentForm />
       </Container>
       {/*  <CarouselHome /> */}
 
