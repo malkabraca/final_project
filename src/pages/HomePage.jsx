@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupExample from "../components/popupOrder";
-import PaymentForm from "../components/PagsFromPaymentOrder ";
+import PaymentForm from "../components/PaymentForm";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -35,16 +35,11 @@ const HomePage = () => {
         </p>
 
         <div className="divbuttonehome">
-         
           <Button variant="warning" className="buttonhome">
             Book a table
           </Button>
-         
-            <PopupExample 
-            variant="warning"
-            onClick={handleButtonClick}
-        />
-       
+
+          <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
         <PaymentForm />
       </Container>

@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import MenuPage from "../pages/MenuPage";
 import EditCardPage from "../pages/EditCardPage";
 import CreateCardPage from "../pages/CreateCardPage";
+import CRMPage from "../pages/crmPage";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
 // import ProtectedRoute from "../components/ProtectedRoute";
@@ -31,6 +32,7 @@ const Router = () => {
       <Route path={ROUTES.MENU} element={<MenuPage />} />
       <Route path="/edit/:id" element={<EditCardPage />} />
       <Route path={ROUTES.CREATE} element={<CreateCardPage />}/>
+      <Route path={ROUTES.CRM} element={<CRMPage />}/>
     </Routes>
 
 

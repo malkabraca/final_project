@@ -66,6 +66,14 @@ const Navbars = () => {
             </Nav.Link>
             <Nav.Link
               id="nav"
+              href={ROUTES.CRM}
+              className={activeLink === "Link" ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              CRM
+            </Nav.Link>
+            <Nav.Link
+              id="nav"
               href={ROUTES.MENU}
               className={activeLink === "Link" ? "active" : ""}
               onClick={handleLinkClick}
