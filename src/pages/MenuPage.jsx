@@ -25,14 +25,16 @@ const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [orderIdMenu, setOrderIdMenu] = useState(null);
-  const [cardrIdMenu, setCardIdMenu] = useState({
-    card_id: "649ab96775cadb77fbffba0b",
-  });
+ 
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   // use localstorage user id by jwt decoded
+  const isLoggedIn = useSelector(
+    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
+  );
   const id = jwt_decode(localStorage.token)._id;
+
 
   // useEffect(() => {
   //   handleAddToOrder(orderIdMenu);

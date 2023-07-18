@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import useQueryParams from "../hooks/useQueryParams";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -11,6 +11,7 @@ import jwt_decode from "jwt-decode";
 import { logDOM } from "@testing-library/react";
 import TableOrder from "./TableOrder";
 import Table from "react-bootstrap/Table";
+import ROUTES from "../routes/ROUTES";
 
 const CompletionOfAnOrder = ({ orderId }) => {
   const [totalSum, setTotalSum] = useState(0);
@@ -128,7 +129,13 @@ const CompletionOfAnOrder = ({ orderId }) => {
   
     calculateTotalSum();
   }, [cardsArr]);
-  console.log("cardsArr", cardsArr);
+
+  const handelFoPayment=()=>{
+    // setCardsArr(null)
+    navigate(ROUTES.PAYMENT)
+  }
+
+
   return (
     <Container>
       <Offcanvas show={show} onHide={handleClose}>
@@ -163,6 +170,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
               </tr>
             </tbody>
           </Table>
+          <Button variant="warning" onClick={handelFoPayment}>Payment</Button>
         </Offcanvas.Body>
       </Offcanvas>
       <div>
@@ -174,6 +182,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
           Completion of an order
         </Button>
       </div>
+
     </Container>
   );
 };

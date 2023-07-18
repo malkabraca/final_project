@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage"; 
+import HomePage from "../pages/HomePage";
 import ROUTES from "./ROUTES";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
@@ -7,9 +7,14 @@ import MenuPage from "../pages/MenuPage";
 import EditCardPage from "../pages/EditCardPage";
 import CreateCardPage from "../pages/CreateCardPage";
 import CRMPage from "../pages/crmPage";
+import AboutPage from "../pages/AbouPage";
+import ProtectedRoute from "../components/ProtectedRoute";
+import LogoutPage from "../pages/LogoutPage";
+import MenuLogoutPage from "../pages/NoLoginMenuPage";
+import PaymentForm from "../components/PaymentForm";
+import MyOrder from "../pages/MyOrder";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
-// import ProtectedRoute from "../components/ProtectedRoute";
 // import ProfilePage from "../pages/ProfilePage";
 // import SuperProtectedRoute from "../components/SuperProtectedRoute";
 // import LogoutPage from "../pages/LogoutPage";
@@ -26,23 +31,26 @@ import CRMPage from "../pages/crmPage";
 const Router = () => {
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<HomePage />} /> 
+      <Route path={ROUTES.HOME} element={<HomePage />} />
+      <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.MENU} element={<MenuPage />} />
+      <Route path={ROUTES.MENULOGUT} element={<MenuLogoutPage />} />
       <Route path="/edit/:id" element={<EditCardPage />} />
-      <Route path={ROUTES.CREATE} element={<CreateCardPage />}/>
-      <Route path={ROUTES.CRM} element={<CRMPage />}/>
+      <Route path={ROUTES.CREATE} element={<CreateCardPage />} />
+      <Route path={ROUTES.CRM} element={<CRMPage />} />
+      <Route path={ROUTES.PAYMENT} element={<PaymentForm />} />
+      <Route path={ROUTES.MYORDER} element={<MyOrder />} />
+      <Route
+        path={ROUTES.LOGOUT}
+        element={<ProtectedRoute element={<LogoutPage />} />}
+      />
     </Routes>
-
 
     //       <Route path={ROUTES.ABOUT} element={<About />} />
     //       <Route  path="infor/:id" element={<InformationCard />} />
 
-    //       <Route
-    //         path={ROUTES.LOGOUT}
-    //         element={<ProtectedRoute element={<LogoutPage />} />}
-    //       />
     //       <Route
     //         path={ROUTES.FAVCARD}
     //         element={<ProtectedRoute element={<FavCardsPage />} />}
@@ -99,7 +107,7 @@ const Router = () => {
     //       </Route>
 
     //       <Route path="*" element={<h1>404</h1>} />
-        // </Routes>
+    // </Routes>
   );
 };
 

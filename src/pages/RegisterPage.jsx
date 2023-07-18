@@ -44,7 +44,7 @@ const RegisterPage = () => {
       if (inputState.imageAlt == "") {
         inputState.imageAlt = "yellow fluffy chickens";
       }
-      await axios.post("/users", {
+      await axios.post("/auth/users", {
        firstName: inputState.firstName,
         lastName: inputState.lastName,
         phone: inputState.phone,
@@ -61,6 +61,7 @@ const RegisterPage = () => {
       });
   navigate(ROUTES.LOGIN); 
     } catch (err) {
+      console.log(err.response.data);
  toast.error("Invalid user information");
 
     }

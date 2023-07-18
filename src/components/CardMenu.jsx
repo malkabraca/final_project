@@ -26,7 +26,7 @@ const CardMenu = ({
   title,
   description,
   price,
-  alt,
+  imageAlt,
   onClick,
   isFavCards,
   onDelete,
@@ -94,7 +94,7 @@ const CardMenu = ({
     <Col xs={12} md={6}>
       <Form.Group as={Col}>
         <ListGroup className="alert">
-          <ImagePopup imageUrl={imageUrl} alt={alt} />
+          <ImagePopup imageUrl={imageUrl} alt={imageAlt} />
           <h3>{title}</h3>
           <h6> {description}</h6>
           <h5>

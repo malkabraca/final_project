@@ -14,9 +14,14 @@ import ROUTES from "../routes/ROUTES";
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { darkThemeActions } from "../store/darkTheme";
+import { authActions } from "../store/auth";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
+  const isLoggedIn = useSelector(
+    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
+  );
+  const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const dispatch = useDispatch();
   const isDarkTheme = useSelector(
     (bigPie) => bigPie.darkThemeSlice.isDarkTheme
@@ -25,6 +30,12 @@ const Navbars = () => {
   const changeTheme = () => {
     dispatch(darkThemeActions.changeTheme());
   };
+
+  const logoutClick = () => {
+    localStorage.clear();
+    dispatch(authActions.logout());
+  };
+
   const handleLinkClick = (event) => {
     setActiveLink(event.target.innerText);
   };
@@ -34,7 +45,6 @@ const Navbars = () => {
       <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-         
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
@@ -48,64 +58,110 @@ const Navbars = () => {
             >
               Home
             </Nav.Link>
+          
             <Nav.Link
               id="nav"
-              href={ROUTES.LOGIN}
-              className={activeLink === "Link" ? "active" : ""}
+              href={ROUTES.ABOUT}
+              className={activeLink === "Home" ? "active" : ""}
               onClick={handleLinkClick}
             >
-              login
+              About
             </Nav.Link>
+            {!isLoggedIn ? (
             <Nav.Link
               id="nav"
-              href={ROUTES.REGISTER}
-              className={activeLink === "Link" ? "active" : ""}
+              href={ROUTES.MENULOGUT}
+              className={activeLink === "Home" ? "active" : ""}
               onClick={handleLinkClick}
             >
-              register
+              General-Menu
             </Nav.Link>
-            <Nav.Link
-              id="nav"
-              href={ROUTES.CRM}
-              className={activeLink === "Link" ? "active" : ""}
-              onClick={handleLinkClick}
-            >
-              CRM
-            </Nav.Link>
-            <Nav.Link
-              id="nav"
-              href={ROUTES.MENU}
-              className={activeLink === "Link" ? "active" : ""}
-              onClick={handleLinkClick}
-            >
-              MENU
-            </Nav.Link>
-          </Nav>
+               ) : (
+                ""
+              )}
+          
+            {isLoggedIn ? ( 
+              <Nav.Link
+                id="nav"
+                href={ROUTES.MENU}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Menu
+              </Nav.Link>
+             ) : (
+              ""
+           )}
+          
+           {isLoggedIn ? ( 
+              <Nav.Link
+                id="nav"
+                href={ROUTES.MYORDER}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                My Order
+              </Nav.Link>
+             ) : (
+              ""
+           )}
+            {isLoggedIn ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.LOGOUT}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={logoutClick}
+              >
+                Logout
+              </Nav.Link>
+            ) : (
+              ""
+            )}
 
-          {/*  <Nav
-            justify
-            variant="tabs"
-            defaultActiveKey="/home"
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <Nav.Item>
-              <Nav.Link href="/home">Active</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="link-1"> NavLink</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="link-2">Link</Nav.Link>
-            </Nav.Item>
-          </Nav>*/}
-           <div sx={{ display: { xs: "none", md: "inline" } }}>
-              {isDarkTheme ? "Dark" : "Light"} Mode
-            </div>
-            <Button  onClick={changeTheme}>
-              {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
-            </Button>
+            {!isLoggedIn ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.LOGIN}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Login
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+            {!isLoggedIn ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.REGISTER}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Register
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+
+            {isLoggedIn && payload.isAdmin ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.CRM}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                CRM
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+          </Nav>
+          <div sx={{ display: { xs: "none", md: "inline" } }}>
+            {isDarkTheme ? "Dark" : "Light"} Mode
+          </div>
+          <Button onClick={changeTheme}>
+            {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
+          </Button>
           <Form className="d-flex">
             <Form.Control
               type="search"

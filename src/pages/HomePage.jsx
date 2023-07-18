@@ -41,7 +41,7 @@ const HomePage = () => {
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
-        <PaymentForm />
+        {/* <PaymentForm /> */}
       </Container>
       {/*  <CarouselHome /> */}
 

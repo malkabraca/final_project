@@ -10,12 +10,17 @@ const paymentSchema = Joi.object({
   //   .required();
   //   cardNumber: Joi.number().min(14).max(14).required(),
   // number: Joi.string().creditCard().required(),
-  number: Joi.number().min(14).max(16).required(),
-  expiry: Joi.string()
-    .pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)
+  number: Joi.string()
+    .pattern(new RegExp(/^(0[1-9])\d{14,16}$/))
+    .min(14)
+    .max(16)
     .required(),
-    cvc: Joi.number().min(3).max(3).required(),
-    focus: Joi.string()
+
+  expiry: Joi.string()
+    // .pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)
+    .required(),
+  cvc: Joi.number().min(111).max(333).required(),
+  focus: Joi.string(),
 });
 
 const validatePaymentSchema = (userInput) =>

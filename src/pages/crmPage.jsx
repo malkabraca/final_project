@@ -25,41 +25,39 @@ const CRMPage =()=>{
  
  }
  
-return (
- <Table striped bordered hover>
-  <thead className="tablacrm">
-   <tr>
-    <th>Biz Number</th>
-    <th className="medieCrm">Name</th>
-    <th>Phone</th>
-    <th className="medieCrm">Email</th>
-    <th className="medieCrm">Street</th>
-    <th className="medieCrm">House Number</th>
-    <th className="medieCrm">City</th>
-    <th>Take Away</th>
-    <th>Order Status</th>
-    <th className="medieCrm">CreatedAt</th>
-   </tr>
-  </thead>
-  <tbody className="tablacrm">
-   {order &&
-    order.map((item) => (
-     <TableCRM
-      key={item._id + Date.now()}
-      bizNumber={item.bizNumber}
-      name={item.name}
-      phone={item.phone}
-      email={item.email}
-      street={item.street}
-      houseNumber={item.houseNumber}
-      takeAway={item.takeAway}
-      orderStatus={item.orderStatus}
-      createdAt={item.createdAt}
-      city={item.city}
-     />
-    ))}
-  </tbody>
- </Table>
+ return (
+  <Table striped bordered hover>
+    <thead className="tablacrm">
+      <tr className="crmHeader">
+        <th>Biz Number</th>
+        <th className="medieCrm">Name</th>
+        <th>Phone</th>
+        <th className="medieCrm">Email</th>
+        <th className="medieCrm">Street</th>
+        <th className="medieCrm">House Number</th>
+        <th>Take Away</th>
+        <th>Order Status</th>
+        <th className="medieCrm">CreatedAt</th>
+      </tr>
+    </thead>
+    <tbody className="tablacrm">
+      {order &&
+        order.map((item) => (
+          <TableCRM
+            key={item._id + Date.now()}
+            bizNumber={item.bizNumber}
+            name={item.name}
+            phone={item.phone}
+            email={item.email}
+            street={item.street}
+            houseNumber={item.houseNumber}
+            takeAway={item.takeAway}
+            orderStatus={item.orderStatus}
+            createdAt={item.createdAt}
+          />
+        ))}
+    </tbody>
+  </Table>
 );
 }
 export default CRMPage
