@@ -9,7 +9,7 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
-import { BsCurrencyDollar } from "react-icons/bs";
+import { BsCardHeading, BsCurrencyDollar, BsListUl } from "react-icons/bs";
 import CardMenu from "../components/CardMenu";
 import { toast } from "react-toastify";
 import useQueryParams from "../hooks/useQueryParams";
@@ -25,7 +25,8 @@ const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [orderIdMenu, setOrderIdMenu] = useState(null);
- 
+  const [listOrCard, setListOrCard] = useState(true);
+
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -70,6 +71,7 @@ const MenuPage = () => {
     let filter = "";
     if (qparams.filter) {
       filter = qparams.filter;
+      console.log(filter);
     }
     if (!originalCardsArr && data) {
       /*
@@ -117,32 +119,21 @@ const MenuPage = () => {
     const cardToEdit = cardsArr.find((card) => card._id == id);
     navigate(`/edit/${id}`, { state: { user_id: cardToEdit.user_id } });
   };
-  const handleMoreInformationFromInitialCardsArr = (id) => {
-    navigate(`/infor/${id}`);
-  };
+  // const handleMoreInformationFromInitialCardsArr = (id) => {
+  //   navigate(`/infor/${id}`);
+  // };
   if (!cardsArr) {
     return <Spinner animation="border" role="status"></Spinner>;
   }
   const deleteHome = () => {};
 
-  // console.log(useridorder);
-
-  // const withdrawalOfOrderId = async (id) => {
-  //   try {
-  //     const order = await axios.get("/orders/my-order-findOne/" + id);
-  //     const orderId = order.data;
-  //     setOrderIdMenu(orderId);
-  //     console.log(orderIdMenu);
-  //   } catch (err) {
-  //     toast.error(err.response._id);
-  //   }
-
-  // withdrawalOfOrderId(useridorder);
-
-  // handleAddToOrder(orderIdMenu);
-
+  const handelListOrCard =()=>{
+    setListOrCard(!listOrCard);
+  }
+  
   return (
     <Container>
+      <Button variant="warning" className="buttonList" onClick={handelListOrCard}>{listOrCard?<BsCardHeading />:<BsListUl />}</Button>
       <h1 className="title"> menu</h1>
       <ButtonCreatCom canCreate={payload && payload.isAdmin} />
       <Row className="mb-3">
@@ -162,6 +153,7 @@ const MenuPage = () => {
             canDelete={payload && payload.isAdmin}
             canEd={!(payload && payload.isAdmin)}
             canFav={payload}
+            listOrCard={listOrCard}
           />
         ))}
       </Row>

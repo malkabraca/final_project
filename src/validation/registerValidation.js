@@ -16,7 +16,11 @@ const registerSchema = Joi.object({
       new RegExp(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
       )
-    )
+    ) .messages({
+      "string.empty": "the password should not be empty",
+      "string.pattern.base":
+        "the password should be supper protected, this mean that its should contain only upper and lower case latter's",
+    })
     .min(8)
     .max(10)
     .required(),

@@ -57,6 +57,7 @@ const MenuLogoutPage = () => {
   return (
     <Container>
       <h1 className="title"> menu</h1>
+      <Row xs={1} md={2} className="g-4">
       <Col md={4} lg={2} sm={6}>
       {cardsArr.map((item) => (
           <MenuLogoutCom
@@ -70,6 +71,7 @@ const MenuLogoutPage = () => {
           />
         ))}
       </Col>
+      </Row>
     </Container>
   );
 };

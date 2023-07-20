@@ -17,7 +17,7 @@ const MyOrder = () => {
   //   const [keys, setkeys] = useState(null);
   const navigate = useNavigate();
   const id = jwt_decode(localStorage.token)._id;
-  //   console.log(id);
+    // console.log(id);
 
   useEffect(() => {
     (async () => {
@@ -77,6 +77,7 @@ const MyOrder = () => {
                   className="colinput"
                   value={order.orderStatus ? "Ready Order" : "Working Order"}
                   readOnly
+                  style={{ color: order.orderStatus ? "rgb(252, 215, 94)" : "black" }}
                 />
               </Col>
             </Form.Group>

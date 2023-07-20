@@ -22,8 +22,8 @@ const MenuLogoutCom = ({
  price,
 }) => {
  return (
-  <Container>
-   <Col>
+//   <Container>
+   <Col Col xs={12} md={6}>
     <Form.Group as={Col}>
      <ListGroup className="alert">
       <div className="product-list">
@@ -42,7 +42,16 @@ const MenuLogoutCom = ({
      </ListGroup>
     </Form.Group>
    </Col>
-  </Container>
+//  </Container>
  );
 };
 export default MenuLogoutCom;
+
+
+
+
+
+
+
+
+      

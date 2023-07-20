@@ -5,6 +5,7 @@
 .colinput {
   border: 5px solid rgb(252, 215, 94);
   background-color: rgba(252, 215, 94, 0.37);
+  color: black;
 }
 
 .title {
@@ -107,7 +108,9 @@
 .alertlink {
   background-color: rgba(252, 215, 94, 0);
   width: 10em;
-  color: aliceblue;
+  /* color: rgb(255, 255, 240); */
+  color: black;
+
 }
 .containercreat {
   display: flex;
@@ -272,3 +275,20 @@
   color: rgb(252, 215, 94);
   text-shadow: 2px 2px 4px black;
 }
+
+
+.navLink{
+  margin: 10px;
+}
+
+.cardMenu{
+  width:250px;
+  background-color: rgba(241, 208, 89, 0.638);
+}
+
+.buttonList{
+  margin: 20px;
+}
+
+
+

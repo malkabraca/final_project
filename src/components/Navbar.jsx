@@ -15,6 +15,8 @@ import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { darkThemeActions } from "../store/darkTheme";
 import { authActions } from "../store/auth";
+import SearchPartial from "./SearchPartial";
+import { Link } from "react-router-dom";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -50,108 +52,127 @@ const Navbars = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link
-              id="nav"
-              href={ROUTES.HOME}
-              className={activeLink === "Home" ? "active" : ""}
-              onClick={handleLinkClick}
-            >
-              Home
-            </Nav.Link>
-          
-            <Nav.Link
-              id="nav"
-              href={ROUTES.ABOUT}
-              className={activeLink === "Home" ? "active" : ""}
-              onClick={handleLinkClick}
-            >
-              About
-            </Nav.Link>
+            <Nav className={"navLink"}>
+              <Link
+                id="nav"
+                to={ROUTES.HOME}
+                // className={activeLink === "Home" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Home
+              </Link>
+            </Nav>
+
+            <Nav className={"navLink"}>
+              <Link
+                id="nav"
+                to={ROUTES.ABOUT}
+                // className={activeLink === "Home" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                About
+              </Link>
+            </Nav>
+
             {!isLoggedIn ? (
-            <Nav.Link
-              id="nav"
-              href={ROUTES.MENULOGUT}
-              className={activeLink === "Home" ? "active" : ""}
-              onClick={handleLinkClick}
-            >
-              General-Menu
-            </Nav.Link>
-               ) : (
-                ""
-              )}
-          
-            {isLoggedIn ? ( 
-              <Nav.Link
-                id="nav"
-                href={ROUTES.MENU}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                Menu
-              </Nav.Link>
-             ) : (
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.MENULOGUT}
+                  // className={activeLink === "Home" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  General-Menu
+                </Link>
+              </Nav>
+            ) : (
               ""
-           )}
-          
-           {isLoggedIn ? ( 
-              <Nav.Link
-                id="nav"
-                href={ROUTES.MYORDER}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                My Order
-              </Nav.Link>
-             ) : (
-              ""
-           )}
+            )}
+
             {isLoggedIn ? (
-              <Nav.Link
-                id="nav"
-                href={ROUTES.LOGOUT}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={logoutClick}
-              >
-                Logout
-              </Nav.Link>
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.MENU}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  Menu
+                </Link>
+              </Nav>
+            ) : (
+              ""
+            )}
+
+            {isLoggedIn ? (
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.MYORDER}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  My Order
+                </Link>
+              </Nav>
+            ) : (
+              ""
+            )}
+            {isLoggedIn ? (
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.LOGOUT}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={logoutClick}
+                >
+                  Logout
+                </Link>
+              </Nav>
             ) : (
               ""
             )}
 
             {!isLoggedIn ? (
-              <Nav.Link
-                id="nav"
-                href={ROUTES.LOGIN}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                Login
-              </Nav.Link>
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.LOGIN}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  Login
+                </Link>
+              </Nav>
             ) : (
               ""
             )}
             {!isLoggedIn ? (
-              <Nav.Link
-                id="nav"
-                href={ROUTES.REGISTER}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                Register
-              </Nav.Link>
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.REGISTER}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  Register
+                </Link>
+              </Nav>
             ) : (
               ""
             )}
 
             {isLoggedIn && payload.isAdmin ? (
-              <Nav.Link
-                id="nav"
-                href={ROUTES.CRM}
-                className={activeLink === "Link" ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                CRM
-              </Nav.Link>
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.CRM}
+                  // className={activeLink === "Link" ? "active" : ""}
+                  onClick={handleLinkClick}
+                >
+                  CRM
+                </Link>
+              </Nav>
             ) : (
               ""
             )}
@@ -163,12 +184,13 @@ const Navbars = () => {
             {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
           </Button>
           <Form className="d-flex">
-            <Form.Control
+            {/* <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-            />
+            /> */}
+            <SearchPartial />
             <Button variant="outline-success">Search</Button>
           </Form>
           <div className="profile-picture-container">

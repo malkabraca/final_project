@@ -16,6 +16,7 @@ import validateOrders from "../validation/orderValidtion";
 import ROUTES from "../routes/ROUTES";
 import popuoFrom from "../components/popuoFrom";
 import PopuoFrom from "../components/popuoFrom";
+import { useSelector } from "react-redux";
 
 const PopupExample = () => {
   const [inputState, setInputState] = useState({
@@ -33,7 +34,7 @@ const PopupExample = () => {
   // console.log(inputsErrorState);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
- 
+  const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   let OrderNumber;
 
   const handeleBtnClick = async (ev) => {
@@ -87,11 +88,20 @@ const PopupExample = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+const handlButtenOrder =()=>{
+  if (!payload) {
+    toast.warning(
+      "Note that registration and login are required to place an order"
+    );
+    return;
+  }
+  setShow(true); 
+}
   const keys = Object.keys(inputState);
 
   return (
     <div>
-      <Button variant="warning" onClick={handleShow} className="buttonhome">
+      <Button variant="warning" onClick={handlButtenOrder} className="buttonhome">
         Click to order
       </Button>
 
