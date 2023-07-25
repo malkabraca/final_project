@@ -4,17 +4,18 @@ import { Navigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
 
-const SuperProtectedRoute = ({ element, isAdmin, isBiz }) => {
+const SuperProtectedRoute = ({ element, isAdmin,}) => {
   //* logic section
   const isLoggedIn = useSelector((bigState) => bigState.authSlice.isLoggedIn);
   const payload = useSelector((bigState) => bigState.authSlice.payload);
   //* html section
   if (isLoggedIn) {
-    if (
-      (isAdmin && payload && payload.isAdmin) ||
-      (isBiz && payload && payload.biz)
-    ) {
+    if (isAdmin && payload && payload.isAdmin) {
       return element;
+    }
+    else{
+      toast.error("invalid permissions");
+      return <Navigate to={ROUTES.HOME} />;
     }
   }
   toast.error("invalid permissions");

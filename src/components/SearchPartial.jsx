@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Form, FormControl, Button } from 'react-bootstrap';
-
+import { Form, FormControl, Button } from "react-bootstrap";
 
 // const Search = styled("div")(({ theme }) => ({
 //   position: "relative",
@@ -49,8 +48,9 @@ import { Form, FormControl, Button } from 'react-bootstrap';
 const SearchPartial = () => {
   const location = useLocation();
   const [searchInput, setSearchInput] = useState("");
-console.log(searchInput);
+  // console.log(searchInput);
   const navigate = useNavigate();
+
   const searchFunc = (ev) => {
     const value = ev.target.value;
     setSearchInput(value);
@@ -61,26 +61,27 @@ console.log(searchInput);
     /* setSearchState(ev.target.value); */
   };
   const searchSubmit = (ev) => {
+    console.log("submitted");
     ev.preventDefault();
     // event.stopImmediatePropagation();
     const pathname = location.pathname;
     navigate(`${pathname}?filter=${searchInput}`);
   };
 
-  console.log(searchInput);
+  // console.log(searchInput);
   return (
-    // <Form onSubmit={searchSubmit}>
+    <Form onSubmit={searchSubmit} className="d-flex">
       <Form.Control
-      // onSubmit={searchSubmit}
-        // type="search"
+        onSubmit={searchSubmit}
+        type="search"
         placeholder="Search"
         className="me-2"
         aria-label="Search"
         value={searchInput}
-        onChange={searchFunc}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
-     
-    // </Form>
+      <Button variant="outline-success" type="submit">Search</Button>
+    </Form>
   );
 };
 

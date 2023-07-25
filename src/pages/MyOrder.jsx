@@ -17,7 +17,6 @@ const MyOrder = () => {
   //   const [keys, setkeys] = useState(null);
   const navigate = useNavigate();
   const id = jwt_decode(localStorage.token)._id;
-    // console.log(id);
 
   useEffect(() => {
     (async () => {
@@ -32,6 +31,7 @@ const MyOrder = () => {
         delete order.__v;
         delete order.menuOrder;
         setOrder(order);
+        console.log("order", order);
         // const keys = Object.keys(order);
         // setkeys(keys);
       } catch (err) {
@@ -41,6 +41,7 @@ const MyOrder = () => {
   }, [id]);
 
   if (!order) {
+    // navigate(ROUTES.HOME);
     return <Spinner animation="border" role="status"></Spinner>;
   }
 
@@ -48,17 +49,18 @@ const MyOrder = () => {
     navigate(ROUTES.HOME);
   };
   const keys = Object.keys(order);
-  //   console.log("keys", keys);
+  console.log("keys", keys);
   //   console.log("order", order);
   return (
     <Container>
       <h1 className="title">My Order</h1>
+      {keys.length === 0 ? <h1 className="titelNoOrder">There is no order</h1> : ""}
       <Col md={{ span: 6, offset: 3 }} xs={12}>
         <Row className="mb-3">
           {keys.map((item) => (
             <MyOrderCom key={item} item={item} order={order} />
           ))}
-          <Col xs={12} md={6}>
+         {keys.length !== 0 ? (<Col xs={12} md={6}>
             <Form.Group as={Col} controlid={"orderStatus"}>
               <Form.Label
                 className="textMyOrder"
@@ -77,18 +79,20 @@ const MyOrder = () => {
                   className="colinput"
                   value={order.orderStatus ? "Ready Order" : "Working Order"}
                   readOnly
-                  style={{ color: order.orderStatus ? "rgb(252, 215, 94)" : "black" }}
+                  style={{
+                    color: order.orderStatus ? "rgb(252, 215, 94)" : "black",
+                  }}
                 />
               </Col>
             </Form.Group>
-          </Col>
-          <Form.Check
+          </Col>):("")}
+          {keys.length !== 0 ? ( <Form.Check
             className="CheckMyOrder"
             type={"checkbox"}
             id={"takeAway"}
             label="Take Away"
             defaultChecked={order.takeAway}
-          />
+          />):("")}
         </Row>
         <Row className="mb-3">
           <Button

@@ -23,7 +23,7 @@ const MenuLogoutCom = ({
 }) => {
  return (
 //   <Container>
-   <Col Col xs={12} md={6}>
+   <Col xs={12} md={6}>
     <Form.Group as={Col}>
      <ListGroup className="alert">
       <div className="product-list">

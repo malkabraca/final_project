@@ -36,7 +36,6 @@ const MenuPage = () => {
   );
   const id = jwt_decode(localStorage.token)._id;
 
-
   // useEffect(() => {
   //   handleAddToOrder(orderIdMenu);
   // }, [cardrIdMenu]);
@@ -80,8 +79,8 @@ const MenuPage = () => {
       setOriginalCardsArr(data);
       setCardsArr(
         data.filter(
-          (card) =>
-            card.title.startsWith(filter) || card.bizNumber.startsWith(filter)
+          (card) => card.title.startsWith(filter)
+          // || card.bizNumber.startsWith(filter)
         )
       );
       return;
@@ -93,8 +92,8 @@ const MenuPage = () => {
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
         newOriginalCardsArr.filter(
-          (card) =>
-            card.title.startsWith(filter) || card.bizNumber.startsWith(filter)
+          (card) => card.title.startsWith(filter)
+          // || card.bizNumber.startsWith(filter)
         )
       );
     }
@@ -127,17 +126,78 @@ const MenuPage = () => {
   }
   const deleteHome = () => {};
 
-  const handelListOrCard =()=>{
+  const handelListOrCard = () => {
     setListOrCard(!listOrCard);
-  }
-  
+  };
+
   return (
     <Container>
-      <Button variant="warning" className="buttonList" onClick={handelListOrCard}>{listOrCard?<BsCardHeading />:<BsListUl />}</Button>
+      <Button
+        variant="warning"
+        className="buttonList"
+        onClick={handelListOrCard}
+      >
+        {listOrCard ? <BsCardHeading /> : <BsListUl />}
+      </Button>
       <h1 className="title"> menu</h1>
       <ButtonCreatCom canCreate={payload && payload.isAdmin} />
-      <Row className="mb-3">
-        {cardsArr.map((item) => (
+      <h2 className="subtitleh2">Main dishes</h2>
+      <Row>
+        {cardsArr
+          .filter((item) => item.category === "Main dishes")
+          .map((item) => (
+            <CardMenu
+              key={item._id + Date.now()}
+              id={item._id}
+              imageUrl={item.imageUrl}
+              imageAlt={item.imageAlt}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              orderId={orderIdMenu}
+              onDelete={handleDeleteFromInitialCardsArr}
+              onEdit={handleEditFromInitialCardsArr}
+              canEdit={payload && payload.isAdmin}
+              canDelete={payload && payload.isAdmin}
+              canEd={!(payload && payload.isAdmin)}
+              canFav={payload}
+              listOrCard={listOrCard}
+            />
+          ))}
+        <h2 className="subtitleh2">Drinking</h2>
+        {cardsArr
+          .filter((item) => item.category === "drinking")
+          .map((item) => (
+            <CardMenu
+              key={item._id + Date.now()}
+              id={item._id}
+              imageUrl={item.imageUrl}
+              imageAlt={item.imageAlt}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              orderId={orderIdMenu}
+              onDelete={handleDeleteFromInitialCardsArr}
+              onEdit={handleEditFromInitialCardsArr}
+              canEdit={payload && payload.isAdmin}
+              canDelete={payload && payload.isAdmin}
+              canEd={!(payload && payload.isAdmin)}
+              canFav={payload}
+              listOrCard={listOrCard}
+            />
+          ))}
+      </Row>
+      <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
+
+      {/* <ButtonCreatCom /> */}
+    </Container>
+  );
+};
+
+export default MenuPage;
+
+{
+  /* {cardsArr.map((item) => (
           <CardMenu
             key={item._id + Date.now()}
             id={item._id}
@@ -155,13 +215,5 @@ const MenuPage = () => {
             canFav={payload}
             listOrCard={listOrCard}
           />
-        ))}
-      </Row>
-      <CompletionOfAnOrder variant="warning"  orderId={orderIdMenu}/>
-
-      {/* <ButtonCreatCom /> */}
-    </Container>
-  );
-};
-
-export default MenuPage;
+        ))} */
+}

@@ -183,16 +183,7 @@ const Navbars = () => {
           <Button onClick={changeTheme}>
             {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
           </Button>
-          <Form className="d-flex">
-            {/* <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            /> */}
             <SearchPartial />
-            <Button variant="outline-success">Search</Button>
-          </Form>
           <div className="profile-picture-container">
             <Image
               src={

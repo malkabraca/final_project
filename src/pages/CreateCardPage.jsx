@@ -14,6 +14,7 @@ const CreateCardPage = () => {
     title: "",
     description: "",
     price: "",
+    category:"",
   });
   const [inputsErrorsState, setInputsErrorsState] = useState([]);
   const navigate = useNavigate();

@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
-import { logDOM } from "@testing-library/react";
 import TableOrder from "./TableOrder";
 import Table from "react-bootstrap/Table";
 import ROUTES from "../routes/ROUTES";
@@ -17,8 +16,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
   const [totalSum, setTotalSum] = useState(0);
   const [show, setShow] = useState(false);
   const [cardsArr, setCardsArr] = useState(null);
-  const [orderIdMenu, setOrderIdMenu] = useState();
-  const [cardrIdMenu, setCardIdMenu] = useState({});
+
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -131,7 +129,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
   }, [cardsArr]);
 
   const handelFoPayment=()=>{
-    // setCardsArr(null)
+    setCardsArr(null)
     navigate(ROUTES.PAYMENT)
   }
 

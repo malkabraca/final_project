@@ -9,7 +9,8 @@ const ROUTES = {
   ABOUT:"/about",
   LOGOUT: "/logout",
   PAYMENT:"/payment",
-  MYORDER:"/my-order"
+  MYORDER:"/my-order",
+  BOOKTABLE:"/Book-Table"
   // EDIT:"/edit",
   //   PROFILE: "/profile",
   //   FAVCARD:"/favCards"

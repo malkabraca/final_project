@@ -12,6 +12,7 @@ const ProtectedRoute = ({ element }) => {
   if (isLoggedIn) {
     return element;
   } else {
+    toast.error("invalid permissions");
     return <Navigate to={ROUTES.LOGIN} />;
   }
 };

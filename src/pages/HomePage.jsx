@@ -45,9 +45,8 @@ const HomePage = () => {
         </div>
         {/* <PaymentForm /> */}
       </Container>
-      {/*  <CarouselHome /> */}
-
       <CardFood />
+      <CarouselHome />
     </Container>
   );
 };

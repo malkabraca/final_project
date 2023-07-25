@@ -184,11 +184,13 @@ const PaymentForm = () => {
     cvc: "",
     name: "",
     focus: "",
-    numberError: "",
-    expiryError: "",
-    nameError: "",
+    numberError: null,
+    expiryError: null,
+    nameError: null,
+    cvcError:null,
   });
-  const [orderId, setOrderId] = useState({})
+  console.log(state);
+  const [orderId, setOrderId] = useState({});
 
   const id = jwt_decode(localStorage.token)._id;
 
@@ -203,20 +205,26 @@ const PaymentForm = () => {
     };
     withdrawalOfOrderId();
   }, []);
-console.log("orderId",orderId);
-  const handelButtonPay =async()=>{
+
+  const handelButtonPay = async () => {
     try {
       await axios.patch("/orders/orderStatus/" + orderId);
-      toast.success("An order is currently in the works")
+      toast.success("An order is currently in the works");
     } catch (err) {
-      console.log(err. response);
+      console.log(err.response);
       toast.error(err.response.data);
     }
   };
 
   const validateCVV = (value) => {
     if (value.length !== 3) {
-      setState((prev) => ({ ...prev, cvc: value.substring(0, 3) }));
+      setState((prev) => ({
+        ...prev,
+        cvc: value.substring(0, 3),
+        cvcError: "cvc must contain 3 numbers",
+      }));
+    } else {
+      setState((prev) => ({ ...prev, cvc: value, cvcError: "" }));
     }
   };
 
@@ -253,7 +261,7 @@ console.log("orderId",orderId);
     if (value.length > 16) {
       setState((prev) => ({
         ...prev,
-        name: value.substring(0, 16),
+        name: value.substring(1, 16),
         nameError: "Name can't exceed 16 characters",
       }));
     } else {
@@ -275,12 +283,14 @@ console.log("orderId",orderId);
     if (name === "expiry") {
       validateExpiration(value);
     }
+    if (name === "name") {
+      validateName(value);
+    }
   };
 
   const handleInputFocus = (evt) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   };
-  
 
   return (
     <Container>
@@ -327,6 +337,7 @@ console.log("orderId",orderId);
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
+          {state.cvcError && <p className="error">{state.cvcError}</p>}
         </form>
         <form>
           <input
@@ -341,7 +352,21 @@ console.log("orderId",orderId);
           {state.nameError && <p className="error">{state.nameError}</p>}
         </form>
       </div>
-      <Button  className="buttonPay" variant="warning" onClick={handelButtonPay}>Pay</Button>
+      <Button
+        className="buttonPay"
+        variant="warning"
+        onClick={handelButtonPay}
+        // disabled={
+        //   state.expiryError ||
+        //   state.nameError ||
+        //   state.numberError ||
+        //   state.cvcError !== ""
+        // }
+        disabled={state.nameError === null || state.expiryError === null || state.numberError === null || state.cvcError === null}
+        
+      >
+        Pay
+      </Button>
     </Container>
   );
 };

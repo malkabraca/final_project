@@ -94,82 +94,101 @@ const CardMenu = ({
   };
 
   return (
-    <Col xs={12} md={6}>
+    <Col xs={12} md={12}>
       {listOrCard ? (
         <Form.Group as={Col}>
           <ListGroup className="alert">
-            <ImagePopup imageUrl={imageUrl} alt={imageAlt} />
-            <h3>{title}</h3>
-            <h6> {description}</h6>
-            <h5>
-              {price}
-              <BsCurrencyDollar />
-            </h5>
-            <Row className="mb-3">
-              {canDelete && (
-                <Button
-                  variant="warning"
-                  onClick={handleDeleteBtnClick}
-                  className="buttenDelEdiMenu"
-                >
-                  <BsTrashFill />
-                </Button>
-              )}
-              {canEdit && (
-                <Button
-                  variant="warning"
-                  onClick={handleEditBtnClick}
-                  className="buttenDelEdiMenu"
-                >
-                  <BsPencilFill />
-                </Button>
-              )}
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu"
-                  onClick={handlePlos}
-                >
-                  <BsFillCaretUpFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu"
-                  // onClick={handleAddToOrder}
-                >
-                  {amount}
-                </Button>
-              ) : (
-                ""
-              )}
+            <div className="product-list">
+              <div key={id} className="product-item">
+                <ImagePopup imageUrl={imageUrl} alt={imageAlt} />
+                <div className="product-details">
+                  <h3>{title}</h3>
+                  <h6>{description}</h6>
+                  <h5>
+                    {price}
+                    <BsCurrencyDollar />
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="buttons-wrappera">
+              <div className="buttons-wrapper">
+                {canEd ? (
+                  <Button
+                    variant="warning"
+                    className="buttenAddMenu"
+                    onClick={handlePlos}
+                  >
+                    <BsFillCaretUpFill />
+                  </Button>
+                ) : (
+                  ""
+                )}
 
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu"
-                  onClick={handleMinoc}
-                >
-                  {" "}
-                  <BsFillCaretDownFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canEd && (
-                <Button
-                  variant="warning"
-                  onClick={handleAddToOrder}
-                  className={isFilled ? "alertlink filled" : "alertlink"}
-                  href="#"
-                >
-                  {isFilled ? "Added to order" : "Add to order"}
-                </Button>
-              )}
-            </Row>
+                {canEd ? (
+                  <Button
+                    variant="warning"
+                    className="buttenAddMenu"
+                    /* onClick={handleAddToOrder} */
+                  >
+                    {amount}
+                  </Button>
+                ) : (
+                  ""
+                )}
+
+                {canEd ? (
+                  <Button
+                    variant="warning"
+                    className="buttenAddMenu"
+                    onClick={handleMinoc}
+                  >
+                    <BsFillCaretDownFill />
+                  </Button>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="buttons-wrapper">
+                {canEd ? (
+                  <Button
+                    variant="warning"
+                    onClick={handleAddToOrder}
+                    className={isFilled ? "alertlink filled" : "alertlink"}
+                    /*  href="#" */
+                  >
+                    {isFilled ? "Added to order" : "Add to order"}
+                  </Button>
+                ) : (
+                  ""
+                )}
+              </div>
+              <Row>
+                {canDelete ? (
+                  <Button
+                    variant="warning"
+                    className="buttenDelEdiMenu"
+                    onClick={handleDeleteBtnClick}
+                  >
+                    <BsTrashFill />
+                  </Button>
+                ) : (
+                  ""
+                )}
+                {canEdit ? (
+                  <Button
+                    variant="warning"
+                    className="buttenDelEdiMenu"
+                    onClick={handleEditBtnClick}
+                  >
+                    <BsPencilFill />
+                  </Button>
+                ) : (
+                  ""
+                )}
+                
+              </Row>
+            </div>
           </ListGroup>
         </Form.Group>
       ) : (
@@ -228,7 +247,7 @@ const CardMenu = ({
                 <Button
                   variant="warning"
                   className="buttenAddMenu"
-                  // onClick={handleAddToOrder}
+                  onClick={handleAddToOrder}
                 >
                   {amount}
                 </Button>
@@ -253,7 +272,7 @@ const CardMenu = ({
                   variant="warning"
                   onClick={handleAddToOrder}
                   className={isFilled ? "alertlink filled" : "alertlink"}
-                  // href="#"
+                  href="#"
                 >
                   {isFilled ? "Added to order" : "Add to order"}
                 </Button>
@@ -268,3 +287,174 @@ const CardMenu = ({
 };
 
 export default CardMenu;
+
+// <Col xs={12} md={6}>
+//       {listOrCard ? (
+//         <Form.Group as={Col}>
+//           <ListGroup className="alert">
+//             <ImagePopup imageUrl={imageUrl} alt={imageAlt} />
+//             <h3>{title}</h3>
+//             <h6> {description}</h6>
+//             <h5>
+//               {price}
+//               <BsCurrencyDollar />
+//             </h5>
+//             <Row className="mb-3">
+//               {canDelete && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleDeleteBtnClick}
+//                   className="buttenDelEdiMenu"
+//                 >
+//                   <BsTrashFill />
+//                 </Button>
+//               )}
+//               {canEdit && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleEditBtnClick}
+//                   className="buttenDelEdiMenu"
+//                 >
+//                   <BsPencilFill />
+//                 </Button>
+//               )}
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   onClick={handlePlos}
+//                 >
+//                   <BsFillCaretUpFill />
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   // onClick={handleAddToOrder}
+//                 >
+//                   {amount}
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   onClick={handleMinoc}
+//                 >
+//                   {" "}
+//                   <BsFillCaretDownFill />
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+//               {canEd && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleAddToOrder}
+//                   className={isFilled ? "alertlink filled" : "alertlink"}
+//                   href="#"
+//                 >
+//                   {isFilled ? "Added to order" : "Add to order"}
+//                 </Button>
+//               )}
+//             </Row>
+//           </ListGroup>
+//         </Form.Group>
+//       ) : (
+//         <Form.Group as={Col}>
+//           <Card className="cardMenu">
+//             {/* <Card.Img variant="top" src={imageUrl}alt={imageAlt} /> */}
+//             <Image
+//               src={imageUrl}
+//               roundedCircle
+//               style={{
+//                 display: "block",
+//                 margin: "0 auto",
+//                 width: "150px",
+//                 height: "150px",
+//               }}
+//             />
+//             <Card.Body className="cardBody">
+//               <Card.Title>{title}</Card.Title>
+//               <Card.Text>{description}</Card.Text>
+//               <h5>
+//                 {price}
+//                 <BsCurrencyDollar />
+//               </h5>
+
+//               {/* <Row className="mb-3"> */}
+//               {canDelete && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleDeleteBtnClick}
+//                   className="buttenDelEdiMenu"
+//                 >
+//                   <BsTrashFill />
+//                 </Button>
+//               )}
+//               {canEdit && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleEditBtnClick}
+//                   className="buttenDelEdiMenu"
+//                 >
+//                   <BsPencilFill />
+//                 </Button>
+//               )}
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   onClick={handlePlos}
+//                 >
+//                   <BsFillCaretUpFill />
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   // onClick={handleAddToOrder}
+//                 >
+//                   {amount}
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+
+//               {canEd ? (
+//                 <Button
+//                   variant="warning"
+//                   className="buttenAddMenu"
+//                   onClick={handleMinoc}
+//                 >
+//                   {/* {" "} */}
+//                   <BsFillCaretDownFill />
+//                 </Button>
+//               ) : (
+//                 ""
+//               )}
+//               {canEd && (
+//                 <Button
+//                   variant="warning"
+//                   onClick={handleAddToOrder}
+//                   className={isFilled ? "alertlink filled" : "alertlink"}
+//                   // href="#"
+//                 >
+//                   {isFilled ? "Added to order" : "Add to order"}
+//                 </Button>
+//               )}
+//               {/* </Row> */}
+//             </Card.Body>
+//           </Card>
+//         </Form.Group>
+//       )}
+//     </Col>

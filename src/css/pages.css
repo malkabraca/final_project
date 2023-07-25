@@ -146,15 +146,16 @@
   border-radius: 0px; */
   width: 3em;
   height: 2em;
-  margin: 1%;
-  display: flexbox;
+  margin: 3px 2.5px;
+  /* margin-top: -1%; */
+  /* display: flexbox; */
 }
 
 .buttenCompletionOfAnOrder {
   background-color: rgba(252, 215, 94, 0);
-  width: 30em;
+  width: 90%;
   color: aliceblue;
-  margin: 2em;
+  margin: 2em 0; 
 }
 .filled {
   background-color: rgba(252, 215, 94, 1);
@@ -172,7 +173,7 @@
 .product-item {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-left: 5%;
 }
 .buttons-wrappera {
   display: flex;
@@ -180,7 +181,8 @@
   flex-direction: column;
   position: absolute;
   margin-top: 5%;
-  right: 50%;
+  /* right: 50%; */
+  left: 80%;
   transform: translateY(-30%);
 }
 
@@ -221,7 +223,8 @@
     /*  justify-content: flex-start;  */
     position: absolute;
     margin-top: 5%;
-    right: 30%;
+    /* right: 30%; */
+    
     transform: translateY(-30%);
   }
 }
@@ -231,7 +234,7 @@
     flex-direction: column;
     justify-content: flex-start;
     position: absolute;
-    right: 0;
+    /* right: 0; */
     transform: translateY(-35%);
   }
 
@@ -291,4 +294,35 @@
 }
 
 
+.subtitleh2 {
+  /* margin-top: 15%; */
+  /* text-align: center; */
+  font-weight: 800;
+  color: rgb(252, 215, 94);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+  font-size: 2.5em;
+}
 
+.titelNoOrder{
+  color: rgb(0, 0, 0);
+  text-shadow: -3px -3px 4px rgb(252, 215, 94);
+}
+
+
+@media (max-width: 430px) {
+  .buttons-wrappera {
+ 
+ margin-top: 70px;
+  
+  } 
+.product-item {
+  display: block;
+  align-items: center;
+  margin-right: 20px;
+}
+.alertlink {
+  width: 7.5em;
+}
+.buttenAddMenu{
+    width: 2.3em;
+}}
