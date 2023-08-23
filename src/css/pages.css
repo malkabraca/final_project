@@ -5,17 +5,9 @@
 .colinput {
   border: 5px solid rgb(252, 215, 94);
   background-color: rgba(252, 215, 94, 0.37);
-  color: black;
+  color: #000000;
 }
 
-.title {
-  margin: 50px;
-  text-align: center;
-  font-weight: 800;
-  color: rgb(252, 215, 94);
-  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
-  font-size: 5em;
-}
 .subtitle {
   margin-top: 15%;
   text-align: center;
@@ -77,11 +69,6 @@
   border: 5px solid rgb(252, 215, 94);
   background-color: rgba(252, 215, 94, 0.37);
 }
-.phome {
-  color: aliceblue;
-  font-size: 20px;
-  text-align: justify;
-}
 
 .cardmenu {
   width: 300%;
@@ -110,7 +97,6 @@
   width: 10em;
   /* color: rgb(255, 255, 240); */
   color: black;
-
 }
 .containercreat {
   display: flex;
@@ -155,7 +141,7 @@
   background-color: rgba(252, 215, 94, 0);
   width: 90%;
   color: aliceblue;
-  margin: 2em 0; 
+  margin: 2em 0;
 }
 .filled {
   background-color: rgba(252, 215, 94, 1);
@@ -164,10 +150,6 @@
   width: 3rem;
   height: 3rem;
   margin: 2%;
-}
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .product-item {
@@ -224,7 +206,7 @@
     position: absolute;
     margin-top: 5%;
     /* right: 30%; */
-    
+
     transform: translateY(-30%);
   }
 }
@@ -267,62 +249,158 @@
   }
 }
 
-.CheckMyOrder{
+.CheckMyOrder {
   font-size: 1rem;
   color: #ffffff;
 }
 
-.textMyOrder{
+.textMyOrder {
   font-size: 1.1rem;
   /* color: #ffffff; */
   color: rgb(252, 215, 94);
   text-shadow: 2px 2px 4px black;
 }
 
-
-.navLink{
+.navLink {
   margin: 10px;
 }
 
-.cardMenu{
-  width:250px;
+.cardMenu {
+  width: 250px;
   background-color: rgba(241, 208, 89, 0.638);
 }
 
-.buttonList{
-  margin: 20px;
-}
 
 
-.subtitleh2 {
-  /* margin-top: 15%; */
-  /* text-align: center; */
-  font-weight: 800;
-  color: rgb(252, 215, 94);
-  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
-  font-size: 2.5em;
-}
-
-.titelNoOrder{
+.titelNoOrder {
   color: rgb(0, 0, 0);
   text-shadow: -3px -3px 4px rgb(252, 215, 94);
 }
 
-
 @media (max-width: 430px) {
   .buttons-wrappera {
- 
- margin-top: 70px;
-  
-  } 
-.product-item {
-  display: block;
-  align-items: center;
-  margin-right: 20px;
-}
-.alertlink {
-  width: 7.5em;
-}
-.buttenAddMenu{
+    margin-top: 70px;
+  }
+  .product-item {
+    display: block;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .alertlink {
+    width: 7.5em;
+  }
+  .buttenAddMenu {
     width: 2.3em;
-}}
+  }
+}
+
+.inputBookTable {
+  align-items: center;
+  margin: 0 0 0 0;
+  width: 160px;
+  height: 80px;
+}
+.table-page .row {
+  width: 227px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.table-page .row > * {
+  align-items: center;
+  width: 70%;
+  padding: 0 0 0 0;
+}
+.bookContainer {
+  margin: 0 0 0 10%;
+}
+
+@media (max-width: 535px) {
+  .bookContainer {
+    margin: 0 0 0 0%;
+  }
+}
+@media (max-width: 520px) {
+  .inputBookTable {
+    /*   align-items: center; */
+    margin: 0 0 0 0;
+    width: 160px;
+    height: 40px;
+  }
+  .table-page .row {
+    width: 100%;
+    display: block;
+  }
+  .table-page .row > * {
+    align-items: center;
+    width: 100%;
+    padding: 0 0 0 0;
+  }
+  .bookContainer {
+    margin: 0 0 0 10%;
+  }
+}
+
+@media (max-width: 499px) {
+  .table-page .button_book {
+    width: 60%;
+    margin: 2em 20%;
+  }
+}
+@media (max-width: 375px) {
+  .table-page .button_book {
+    width: 80%;
+    margin: 2em 10%;
+  }
+}
+
+.table-page .button_book {
+  border: 5px solid rgb(252, 215, 94);
+  background-color: rgba(252, 215, 94, 0.37);
+  width: 40%;
+  margin: 2em 30%;
+  align-items: center;
+  border-radius: 25px;
+  color: darkgoldenrod;
+}
+.input_category{
+  height: 59px;
+ }
+
+
+
+
+
+
+
+
+
+/* .buttonList {
+  margin: 20px;
+} */
+
+/* .title {
+  margin: 50px;
+  text-align: center;
+  font-weight: 800;
+  color: rgb(252, 215, 94);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+  font-size: 5em;
+}
+
+.phome {
+  color: aliceblue;
+  font-size: 20px;
+  text-align: justify;
+} */
+
+/* .subtitleh2 {
+  font-weight: 800;
+  color: rgb(252, 215, 94);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+  font-size: 2.5em;
+}  */
+
+/* .product-list {
+  display: flex;
+  flex-wrap: wrap;
+} */

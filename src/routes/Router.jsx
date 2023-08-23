@@ -15,7 +15,8 @@ import PaymentForm from "../components/PaymentForm";
 import MyOrder from "../pages/MyOrder";
 import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import SuperProtectedRouteEdit from "../components/SuperProtectedRouteEdit";
-import BookTable from "../pages/BookTable";
+import BookTable from "../components/BookTable";
+
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
 // import ProfilePage from "../pages/ProfilePage";

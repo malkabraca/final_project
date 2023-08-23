@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, FloatingLabel, Form, Row, Spinner } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  FloatingLabel,
+  Form,
+  Row,
+  Spinner,
+} from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 import axios from "axios";
@@ -94,29 +102,6 @@ const EditCardPage = () => {
               inputsErrorsState={inputsErrorsState}
             />
           ))}
-          {/* <Form.Group as={Col} controlid={inputState.bizNumber}>
-            <FloatingLabel
-              controlid="floatingInput"
-              label={"bizNumber" + "*"}
-              className="mb-3"
-            >
-              <Form.Control
-                name={inputState.bizNumber}
-                id={inputState.bizNumber}
-                type={inputState.bizNumber}
-                className="colinput"
-                value={inputState ? inputState.bizNumber : ""}
-                isInvalid={inputsErrorsState && inputsErrorsState.bizNumber}
-              />
-              {inputsErrorsState && inputsErrorsState.bizNumber && (
-                <Form.Control.Feedback tooltip type="invalid">
-                  {inputsErrorsState.bizNumber.map((item) => (
-                    <div key={"{item}-errors" + item}>{item}</div>
-                  ))}
-                </Form.Control.Feedback>
-              )}
-            </FloatingLabel>
-          </Form.Group> */}
         </Row>
         <Row className="mb-3">
           <Button

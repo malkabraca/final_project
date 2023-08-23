@@ -13,10 +13,10 @@
   color: blue;
 }
 
-.profile-picture-container {
+/* .profile-picture-container {
   display: flex;
   align-items: center;
-}
+} */
 
 .profile-picture {
   width: 40px;

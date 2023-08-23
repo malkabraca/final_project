@@ -64,11 +64,11 @@ height: 200px;
 .navbar .nav-link.active {
     color: blue;
   }
-
+/* 
   .profile-picture-container {
   display: flex;
   align-items: center;
-}
+} */
 
 .profile-picture {
   width: 40px;

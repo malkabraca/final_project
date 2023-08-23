@@ -1,8 +1,26 @@
 import { Col, FloatingLabel, Form } from "react-bootstrap";
+const itemCategory = ["category"];
 
 const EditCardMenoCom = ({ item, inputState, onChange, inputsErrorState }) => {
   if (item === "bizNumber") return;
-  return (
+  const category = itemCategory.includes(item);
+  return category ? (
+    <Col xs={12} md={6}>
+      <Form.Select
+        name={item}
+        id={item}
+        aria-label="Default select example"
+        className="colinput input_category"
+        onChange={onChange}
+        value={inputState ? inputState[item] : ""}
+      >
+        <option>category</option>
+        <option>Starters</option>
+        <option>Salads</option>
+        <option >Three</option>
+      </Form.Select>
+    </Col>
+  ) : (
     <Col xs={12} md={6}>
       <Form.Group as={Col} controlid={item}>
         <FloatingLabel

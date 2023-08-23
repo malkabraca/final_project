@@ -25,9 +25,7 @@ const Navbars = () => {
   );
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const dispatch = useDispatch();
-  const isDarkTheme = useSelector(
-    (bigPie) => bigPie.darkThemeSlice.isDarkTheme
-  );
+
 
   const changeTheme = () => {
     dispatch(darkThemeActions.changeTheme());
@@ -177,23 +175,7 @@ const Navbars = () => {
               ""
             )}
           </Nav>
-          <div sx={{ display: { xs: "none", md: "inline" } }}>
-            {isDarkTheme ? "Dark" : "Light"} Mode
-          </div>
-          <Button onClick={changeTheme}>
-            {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
-          </Button>
             <SearchPartial />
-          <div className="profile-picture-container">
-            <Image
-              src={
-                "https://dalicanvas.co.il/wp-content/uploads/2022/10/%D7%A9%D7%A7%D7%99%D7%A2%D7%94-%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%AA-1.jpg"
-              }
-              roundedCircle
-              className="profile-picture"
-            />
-            <span className="ml-2">{""}</span>
-          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

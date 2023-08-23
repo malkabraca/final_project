@@ -20,6 +20,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import "../css/menuPage.css";
 
 const CardMenu = ({
   id,

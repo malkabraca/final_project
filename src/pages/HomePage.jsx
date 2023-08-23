@@ -9,6 +9,8 @@ import PopupExample from "../components/popupOrder";
 import PaymentForm from "../components/PaymentForm";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import PopupBookTable from "../components/popupBookTable";
+import "../css/homePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -37,9 +39,10 @@ const HomePage = () => {
         </p>
 
         <div className="divbuttonehome">
-          <Button variant="warning" className="buttonhome">
+          {/* <Button variant="warning" className="buttonhome">
             Book a table
-          </Button>
+          </Button> */}
+          <PopupBookTable variant="warning" />
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>

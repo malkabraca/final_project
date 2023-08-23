@@ -20,12 +20,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ButtonCreatCom from "../components/ButtonCreatCom";
 import CompletionOfAnOrder from "../components/OrderSummaryCom";
-
+import "../css/menuPage.css";
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [orderIdMenu, setOrderIdMenu] = useState(null);
   const [listOrCard, setListOrCard] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const navigate = useNavigate();
   let qparams = useQueryParams();
@@ -130,6 +131,10 @@ const MenuPage = () => {
     setListOrCard(!listOrCard);
   };
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <Container>
       <Button
@@ -139,11 +144,86 @@ const MenuPage = () => {
       >
         {listOrCard ? <BsCardHeading /> : <BsListUl />}
       </Button>
+      <Form.Group className="mb-3" id="formGridCheckbox">
+        <Form.Check
+          type="checkbox"
+          id="biz"
+          className="biz"
+          label="Main dishes"
+          // onClick={handleBizChange}
+        />
+      </Form.Group>
       <h1 className="title"> menu</h1>
       <ButtonCreatCom canCreate={payload && payload.isAdmin} />
       <h2 className="subtitleh2">Main dishes</h2>
       <Row>
-        {cardsArr
+        <h2 className="subtitleh2">Categories</h2>
+        {/* <button onClick={() => handleCategoryClick("Starters")}>
+          Starters
+        </button> */}
+        <button
+          className="buttonhome"
+          onClick={() => handleCategoryClick("Main dishes")}
+        >
+          Main Dishes
+        </button>
+        <button
+          className="buttonhome"
+          onClick={() => handleCategoryClick("drinking")}
+        >
+          drinking
+        </button>
+        <button
+          className="buttonhome"
+          onClick={() => handleCategoryClick(null)}
+        >
+          All
+        </button>
+        <h2 className="subtitleh2">Menu</h2>
+        <h2 className="subtitleh2">{selectedCategory}</h2>
+        {selectedCategory !== null
+          ? cardsArr
+              .filter((item) => item.category === selectedCategory)
+              .map((item) => (
+                <CardMenu
+                  key={item._id + Date.now()}
+                  id={item._id}
+                  imageUrl={item.imageUrl}
+                  imageAlt={item.imageAlt}
+                  title={item.title}
+                  description={item.description}
+                  price={item.price}
+                  orderId={orderIdMenu}
+                  onDelete={handleDeleteFromInitialCardsArr}
+                  onEdit={handleEditFromInitialCardsArr}
+                  canEdit={payload && payload.isAdmin}
+                  canDelete={payload && payload.isAdmin}
+                  canEd={!(payload && payload.isAdmin)}
+                  // canEd = {!(payload && payload.isAdmin) || (orderIdMenu!) }
+                  canFav={payload}
+                  listOrCard={listOrCard}
+                />
+              ))
+          : cardsArr.map((item) => (
+              <CardMenu
+                key={item._id + Date.now()}
+                id={item._id}
+                imageUrl={item.imageUrl}
+                imageAlt={item.imageAlt}
+                title={item.title}
+                description={item.description}
+                price={item.price}
+                orderId={orderIdMenu}
+                onDelete={handleDeleteFromInitialCardsArr}
+                onEdit={handleEditFromInitialCardsArr}
+                canEdit={payload && payload.isAdmin}
+                canDelete={payload && payload.isAdmin}
+                canEd={!(payload && payload.isAdmin)}
+                canFav={payload}
+                listOrCard={listOrCard}
+              />
+            ))}
+        {/* {cardsArr
           .filter((item) => item.category === "Main dishes")
           .map((item) => (
             <CardMenu
@@ -185,7 +265,7 @@ const MenuPage = () => {
               canFav={payload}
               listOrCard={listOrCard}
             />
-          ))}
+          ))} */}
       </Row>
       <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
 
