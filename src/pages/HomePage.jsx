@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import PopupBookTable from "../components/popupBookTable";
 import "../css/homePage.css";
+import Slider from "../components/Slider";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -49,7 +50,8 @@ const HomePage = () => {
         {/* <PaymentForm /> */}
       </Container>
       <CardFood />
-      <CarouselHome />
+      {/* <CarouselHome /> */}
+     <Slider />
     </Container>
   );
 };

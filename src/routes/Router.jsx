@@ -16,6 +16,7 @@ import MyOrder from "../pages/MyOrder";
 import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import SuperProtectedRouteEdit from "../components/SuperProtectedRouteEdit";
 import BookTable from "../components/BookTable";
+import Contact from "../pages/Contact";
 
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
@@ -39,6 +40,7 @@ const Router = () => {
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.MENULOGUT} element={<MenuLogoutPage />} />
       <Route path={ROUTES.LOGOUT} element={<ProtectedRoute />} />
+      <Route path={ROUTES.CONTACT} element={<Contact />} />
       <Route
         path={ROUTES.MENU}
         element={<ProtectedRoute element={<MenuPage />} />}

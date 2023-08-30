@@ -36,7 +36,9 @@ const PopupExample = () => {
   const [show, setShow] = useState(false);
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   let OrderNumber;
-
+  const isLoggedIn = useSelector(
+    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
+  );
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateOrders(inputState);
@@ -65,7 +67,7 @@ const PopupExample = () => {
       });
       toast.success("The registration was done successfully");
       handleClose();
-      navigate(ROUTES.MENU); 
+      navigate(ROUTES.MENU);
     } catch (err) {
       console.log(err);
       toast.error("Invalid user information");
@@ -88,15 +90,15 @@ const PopupExample = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-const handlButtenOrder =()=>{
-  if (!payload) {
-    toast.warning(
-      "Note that registration and login are required to place an order"
-    );
-    return;
-  }
-  setShow(true); 
-}
+  const handlButtenOrder = () => {
+    if (!payload) {
+      toast.warning(
+        "Note that registration and login are required to place an order"
+      );
+      return;
+    }
+    setShow(true);
+  };
   const keys = Object.keys(inputState);
 
   return (
@@ -104,6 +106,14 @@ const handlButtenOrder =()=>{
       <Button variant="warning" onClick={handlButtenOrder} className="buttonhome">
         Click to order
       </Button>
+
+      {/* {isLoggedIn ? (
+        <Button variant="warning" onClick={handleShow} className="buttonhome">
+          Click to order
+        </Button>
+      ) : (
+        ""
+      )} */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="colinput">

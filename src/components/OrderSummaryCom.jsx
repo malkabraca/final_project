@@ -23,17 +23,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const handleShow = () => {
-  //   console.log("poooo");
-  //   console.log(cardsArr);
-  //   if (!cardsArr) {
-  //     toast.error("There are no details in the order");
-  //   }
-  //   else{
-  //     setShow(true);
-  //   }
-   
-  // };
 
   const id = jwt_decode(localStorage.token)._id;
 
@@ -52,30 +41,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
       toast.error(err.response._id);
     }
   };
-
-  // const getOrderData = async () => {
-  //   const orderArr = await completionOrderMenu();
-  //   console.log("orderArr",orderArr);
-  //   if (!orderArr) {
-  //     return
-  //   }
-  //   const firstElements = orderArr.map((array) => array[0]);
-  //   const tElements = orderArr.map((array) => array[1]);
-  //   let card = [];
-  //   try {
-  //     const cards = await axios.get("/cards");
-  //     tElements.map((item) => {
-  //       const matchedCard = cards.data.find((card) => card._id === item);
-  //       if (matchedCard) {
-  //         card = [...card, matchedCard];
-  //       }
-  //     });
-  //     setCardsArr(card);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
 
   const getOrderData = async () => {
     const orderArr = await completionOrderMenu();

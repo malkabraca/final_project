@@ -71,7 +71,16 @@ const Navbars = () => {
                 About
               </Link>
             </Nav>
-
+            <Nav className={"navLink"}>
+              <Link
+                id="nav"
+                to={ROUTES.CONTACT}
+                // className={activeLink === "Home" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Contact
+              </Link>
+            </Nav>
             {!isLoggedIn ? (
               <Nav className={"navLink"}>
                 <Link
@@ -91,7 +100,7 @@ const Navbars = () => {
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
-                  to={ROUTES.MENU}
+                  to={ROUTES.MENULOGUT}
                   // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >

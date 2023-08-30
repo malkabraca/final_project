@@ -31,15 +31,11 @@ const MenuPage = () => {
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
-  // use localstorage user id by jwt decoded
+
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
   const id = jwt_decode(localStorage.token)._id;
-
-  // useEffect(() => {
-  //   handleAddToOrder(orderIdMenu);
-  // }, [cardrIdMenu]);
 
   useEffect(() => {
     axios
@@ -119,9 +115,7 @@ const MenuPage = () => {
     const cardToEdit = cardsArr.find((card) => card._id == id);
     navigate(`/edit/${id}`, { state: { user_id: cardToEdit.user_id } });
   };
-  // const handleMoreInformationFromInitialCardsArr = (id) => {
-  //   navigate(`/infor/${id}`);
-  // };
+
   if (!cardsArr) {
     return <Spinner animation="border" role="status"></Spinner>;
   }
@@ -134,6 +128,17 @@ const MenuPage = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+  const categories = [
+    "Main dishes",
+    "drinking",
+    "Category 3",
+    "Category 4",
+    "Category 5",
+  ];
+
+  const filterItemsByCategory = (category) => {
+    return cardsArr.filter((item) => item.category === category);
+  };
 
   return (
     <Container>
@@ -144,47 +149,15 @@ const MenuPage = () => {
       >
         {listOrCard ? <BsCardHeading /> : <BsListUl />}
       </Button>
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check
-          type="checkbox"
-          id="biz"
-          className="biz"
-          label="Main dishes"
-          // onClick={handleBizChange}
-        />
-      </Form.Group>
-      <h1 className="title"> menu</h1>
-      <ButtonCreatCom canCreate={payload && payload.isAdmin} />
-      <h2 className="subtitleh2">Main dishes</h2>
-      <Row>
-        <h2 className="subtitleh2">Categories</h2>
-        {/* <button onClick={() => handleCategoryClick("Starters")}>
-          Starters
-        </button> */}
-        <button
-          className="buttonhome"
-          onClick={() => handleCategoryClick("Main dishes")}
-        >
-          Main Dishes
-        </button>
-        <button
-          className="buttonhome"
-          onClick={() => handleCategoryClick("drinking")}
-        >
-          drinking
-        </button>
-        <button
-          className="buttonhome"
-          onClick={() => handleCategoryClick(null)}
-        >
-          All
-        </button>
-        <h2 className="subtitleh2">Menu</h2>
-        <h2 className="subtitleh2">{selectedCategory}</h2>
-        {selectedCategory !== null
-          ? cardsArr
-              .filter((item) => item.category === selectedCategory)
-              .map((item) => (
+
+      <div>
+        <h1 className="title"> menu</h1>
+        <ButtonCreatCom canCreate={payload && payload.isAdmin} />
+        <Row>
+          {categories.map((category) => (
+            <div key={category}>
+              <h3 className="subtitleh2">{category}</h3>
+              {filterItemsByCategory(category).map((item) => (
                 <CardMenu
                   key={item._id + Date.now()}
                   id={item._id}
@@ -199,74 +172,14 @@ const MenuPage = () => {
                   canEdit={payload && payload.isAdmin}
                   canDelete={payload && payload.isAdmin}
                   canEd={!(payload && payload.isAdmin)}
-                  // canEd = {!(payload && payload.isAdmin) || (orderIdMenu!) }
                   canFav={payload}
                   listOrCard={listOrCard}
                 />
-              ))
-          : cardsArr.map((item) => (
-              <CardMenu
-                key={item._id + Date.now()}
-                id={item._id}
-                imageUrl={item.imageUrl}
-                imageAlt={item.imageAlt}
-                title={item.title}
-                description={item.description}
-                price={item.price}
-                orderId={orderIdMenu}
-                onDelete={handleDeleteFromInitialCardsArr}
-                onEdit={handleEditFromInitialCardsArr}
-                canEdit={payload && payload.isAdmin}
-                canDelete={payload && payload.isAdmin}
-                canEd={!(payload && payload.isAdmin)}
-                canFav={payload}
-                listOrCard={listOrCard}
-              />
-            ))}
-        {/* {cardsArr
-          .filter((item) => item.category === "Main dishes")
-          .map((item) => (
-            <CardMenu
-              key={item._id + Date.now()}
-              id={item._id}
-              imageUrl={item.imageUrl}
-              imageAlt={item.imageAlt}
-              title={item.title}
-              description={item.description}
-              price={item.price}
-              orderId={orderIdMenu}
-              onDelete={handleDeleteFromInitialCardsArr}
-              onEdit={handleEditFromInitialCardsArr}
-              canEdit={payload && payload.isAdmin}
-              canDelete={payload && payload.isAdmin}
-              canEd={!(payload && payload.isAdmin)}
-              canFav={payload}
-              listOrCard={listOrCard}
-            />
+              ))}
+            </div>
           ))}
-        <h2 className="subtitleh2">Drinking</h2>
-        {cardsArr
-          .filter((item) => item.category === "drinking")
-          .map((item) => (
-            <CardMenu
-              key={item._id + Date.now()}
-              id={item._id}
-              imageUrl={item.imageUrl}
-              imageAlt={item.imageAlt}
-              title={item.title}
-              description={item.description}
-              price={item.price}
-              orderId={orderIdMenu}
-              onDelete={handleDeleteFromInitialCardsArr}
-              onEdit={handleEditFromInitialCardsArr}
-              canEdit={payload && payload.isAdmin}
-              canDelete={payload && payload.isAdmin}
-              canEd={!(payload && payload.isAdmin)}
-              canFav={payload}
-              listOrCard={listOrCard}
-            />
-          ))} */}
-      </Row>
+        </Row>
+      </div>
       <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
 
       {/* <ButtonCreatCom /> */}
@@ -275,25 +188,3 @@ const MenuPage = () => {
 };
 
 export default MenuPage;
-
-{
-  /* {cardsArr.map((item) => (
-          <CardMenu
-            key={item._id + Date.now()}
-            id={item._id}
-            imageUrl={item.imageUrl}
-            imageAlt={item.imageAlt}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            orderId={orderIdMenu}
-            onDelete={handleDeleteFromInitialCardsArr}
-            onEdit={handleEditFromInitialCardsArr}
-            canEdit={payload && payload.isAdmin}
-            canDelete={payload && payload.isAdmin}
-            canEd={!(payload && payload.isAdmin)}
-            canFav={payload}
-            listOrCard={listOrCard}
-          />
-        ))} */
-}

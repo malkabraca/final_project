@@ -16,15 +16,14 @@ const RegisterPage = () => {
   const [inputState, setInputState] = useState({
     firstName: "",
     lastName: "",
-   /*  imageUrl: "",
-    imageAlt: "", */
+    imageUrl: "",
+    imageAlt: "", 
     phone: "",
     email: "",
     password: "",
     city: "",
     street: "",
     houseNumber: "",
-   /*  zipCode: "", */
     biz: false,
   });
   const [inputsErrorState, setinputsErrorState] = useState([]);

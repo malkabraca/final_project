@@ -176,6 +176,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
+import { Route, useNavigate } from "react-router-dom";
+import ROUTES from "../routes/ROUTES";
 
 const PaymentForm = () => {
   const [state, setState] = useState({
@@ -187,11 +189,11 @@ const PaymentForm = () => {
     numberError: null,
     expiryError: null,
     nameError: null,
-    cvcError:null,
+    cvcError: null,
   });
   console.log(state);
   const [orderId, setOrderId] = useState({});
-
+  const navigate = useNavigate();
   const id = jwt_decode(localStorage.token)._id;
 
   useEffect(() => {
@@ -210,6 +212,7 @@ const PaymentForm = () => {
     try {
       await axios.patch("/orders/orderStatus/" + orderId);
       toast.success("An order is currently in the works");
+      navigate(ROUTES.HOME)
     } catch (err) {
       console.log(err.response);
       toast.error(err.response.data);
@@ -356,14 +359,12 @@ const PaymentForm = () => {
         className="buttonPay"
         variant="warning"
         onClick={handelButtonPay}
-        // disabled={
-        //   state.expiryError ||
-        //   state.nameError ||
-        //   state.numberError ||
-        //   state.cvcError !== ""
-        // }
-        disabled={state.nameError === null || state.expiryError === null || state.numberError === null || state.cvcError === null}
-        
+        disabled={
+          state.nameError === null ||
+          state.expiryError === null ||
+          state.numberError === null ||
+          state.cvcError === null
+        }
       >
         Pay
       </Button>

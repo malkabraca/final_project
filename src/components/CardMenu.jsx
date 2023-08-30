@@ -54,8 +54,10 @@ const CardMenu = ({
       // const menuid =
       //   orderdis && orderdis.data.menuOrder.find((item) => item[1] === id);
       if (orderdis && orderdis.data.menuOrder.find((item) => item[1] === id)) {
+        // setaAmount(orderdis.data.menuOrder.item[0]);
         setIsFilled(!isFilled);
       }
+      console.log("orderdis", orderdis.data.menuOrder);
     } catch (err) {
       // console.log(err.response.data);
       toast.error(err.response.data);
@@ -187,7 +189,6 @@ const CardMenu = ({
                 ) : (
                   ""
                 )}
-                
               </Row>
             </div>
           </ListGroup>
@@ -199,17 +200,12 @@ const CardMenu = ({
             <Image
               src={imageUrl}
               roundedCircle
-              style={{
-                display: "block",
-                margin: "0 auto",
-                width: "150px",
-                height: "150px",
-              }}
+              className="img_title"
             />
             <Card.Body className="cardBody">
-              <Card.Title>{title}</Card.Title>
-              <Card.Text>{description}</Card.Text>
-              <h5>
+              <Card.Title className="card_title">{title}</Card.Title>
+              <Card.Text className="card_text">{description}</Card.Text>
+              <h5 className="card_price">
                 {price}
                 <BsCurrencyDollar />
               </h5>
@@ -236,7 +232,7 @@ const CardMenu = ({
               {canEd ? (
                 <Button
                   variant="warning"
-                  className="buttenAddMenu"
+                  className="buttenAddMenu cardButten"
                   onClick={handlePlos}
                 >
                   <BsFillCaretUpFill />
@@ -247,7 +243,7 @@ const CardMenu = ({
               {canEd ? (
                 <Button
                   variant="warning"
-                  className="buttenAddMenu"
+                  className="buttenAddMenu cardButten"
                   onClick={handleAddToOrder}
                 >
                   {amount}
@@ -259,10 +255,9 @@ const CardMenu = ({
               {canEd ? (
                 <Button
                   variant="warning"
-                  className="buttenAddMenu"
+                  className="buttenAddMenu cardButten"
                   onClick={handleMinoc}
                 >
-                  {/* {" "} */}
                   <BsFillCaretDownFill />
                 </Button>
               ) : (
@@ -274,6 +269,7 @@ const CardMenu = ({
                   onClick={handleAddToOrder}
                   className={isFilled ? "alertlink filled" : "alertlink"}
                   href="#"
+                  id="cardButten"
                 >
                   {isFilled ? "Added to order" : "Add to order"}
                 </Button>
