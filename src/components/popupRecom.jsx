@@ -22,7 +22,7 @@ const Recommendation = () => {
 
   const id = jwt_decode(localStorage.token)._id;
 
-  console.log("inputState", inputState);
+
   useEffect(() => {
     (async () => {
       try {
@@ -41,12 +41,11 @@ const Recommendation = () => {
   const AddRecommendation = async () => {
     try {
       await axios.patch("/auth/users/contact/" + id, inputState);
-      handleClose()
+      handleClose();
     } catch (err) {
       toast.error(err.response.data);
     }
   };
-
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -61,9 +60,14 @@ const Recommendation = () => {
     const newjoiResponse = validateRecommendationSchema(newInputState);
     setInputsErrorState(newjoiResponse);
   };
+
   return (
     <div>
-      <Button variant="warning" className="buttonhome" onClick={handleShow}>
+      <Button
+        variant="warning"
+        className="buttonhome"
+        onClick={handleShow}
+      >
         Launch demo modal
       </Button>
 
@@ -100,10 +104,10 @@ const Recommendation = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="warning"className="colinput"  onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={AddRecommendation}>
+          <Button variant="warning" className="colinput" onClick={AddRecommendation}>
             Save Changes
           </Button>
         </Modal.Footer>

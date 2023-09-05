@@ -92,35 +92,6 @@ const PopupBookTable = () => {
     setShow(true);
   };
 
-  // const generateTimeOptions = () => {
-  //   const options = [];
-  //   for (let hour = 11; hour <= 23; hour++) {
-  //     options.push(
-  //       <option key={hour} value={`${hour}:00`}>
-  //         {formatTime(hour)}
-  //       </option>
-  //     );
-  //   }
-  //   return options;
-  // };
-
-  // const generateTimeOptions = () => {
-  //   const currentHour = new Date().getHours();
-  //   const options = [];
-
-  //   for (let hour = currentHour; hour <= 23; hour++) {
-  //     const formattedHour = String(hour).padStart(2, '0');
-  //     options.push(
-  //       <option key={formattedHour} value={formattedHour}>
-  //         {formattedHour}:00
-  //       </option>
-  //     );
-  //   }
-
-  //   return options;
-  // };
-
-
   const generateTimeOptions = () => {
     const selectedDate = new Date(inputState.date);
     const currentDate = new Date();
@@ -186,7 +157,8 @@ const PopupBookTable = () => {
         </Modal.Header>
         <Modal.Body>
           {/* <BookTable /> */}
-          <Container className="table-page">
+          {/* <Container className="table-page"> */}
+          <div className="table-page">
             <Form>
               <Row className="mb-3">
                 <Col xs={12} md={4}>
@@ -249,19 +221,21 @@ const PopupBookTable = () => {
                 </Col>
               </Row>
             </Form>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={handeleBtnContinued}
-              className="button_book"
-            >
-              <BsArrowRightShort />
-              <BsArrowRightShort />
-              Continued
-              <BsArrowLeftShort />
-              <BsArrowLeftShort />
-            </Button>
-          </Container>
+            <Col md={{ span: 6, offset: 4 }} xs={12}>
+              <Button
+                variant="warning"
+                onClick={handeleBtnContinued}
+                className="colinput"
+              >
+                <BsArrowRightShort />
+                <BsArrowRightShort />
+                Continued
+                <BsArrowLeftShort />
+                <BsArrowLeftShort />
+              </Button>
+            </Col>
+          {/* </Container> */}
+          </div>
           {from ? (
             <Form>
               {keys.map((item) => (

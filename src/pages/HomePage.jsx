@@ -10,8 +10,8 @@ import PaymentForm from "../components/PaymentForm";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import PopupBookTable from "../components/popupBookTable";
-import "../css/homePage.css";
 import Slider from "../components/Slider";
+import"../css/home_page.css"
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -47,10 +47,9 @@ const HomePage = () => {
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
-        {/* <PaymentForm /> */}
       </Container>
       <CardFood />
-      {/* <CarouselHome /> */}
+      <h3 className="subtitle">Our recommenders</h3>
      <Slider />
     </Container>
   );

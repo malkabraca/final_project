@@ -20,7 +20,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ButtonCreatCom from "../components/ButtonCreatCom";
 import CompletionOfAnOrder from "../components/OrderSummaryCom";
-import "../css/menuPage.css";
+import "../css/menu.css";
+import "../css/pages.css";
+
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
@@ -149,11 +151,10 @@ const MenuPage = () => {
       >
         {listOrCard ? <BsCardHeading /> : <BsListUl />}
       </Button>
-
       <div>
         <h1 className="title"> menu</h1>
         <ButtonCreatCom canCreate={payload && payload.isAdmin} />
-        <Row>
+        <Row className="mb-3">
           {categories.map((category) => (
             <div key={category}>
               <h3 className="subtitleh2">{category}</h3>

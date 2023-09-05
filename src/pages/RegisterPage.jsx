@@ -38,10 +38,10 @@ const RegisterPage = () => {
       }
       if (inputState.imageUrl == "") {
         inputState.imageUrl =
-          "https://cdn.pixabay.com/photo/2020/04/07/17/01/chicks-5014152_960_720.jpg";
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
       }
       if (inputState.imageAlt == "") {
-        inputState.imageAlt = "yellow fluffy chickens";
+        inputState.imageAlt = "man/Woman";
       }
       await axios.post("/auth/users", {
        firstName: inputState.firstName,
@@ -89,7 +89,7 @@ const RegisterPage = () => {
     <Container>
       <h1 className="title">register</h1>
       <Form>
-        <Col md={{ span: 6, offset: 3 }} xs={12}>
+        <Col md={{ span: 6, offset: 12 }} xs={12}>
           <Row className="mb-3">
             {keys.map((item) => (
               <RegisterCom

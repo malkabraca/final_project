@@ -1,175 +1,6 @@
-// import React, { useState } from "react";
-// import Cards from "react-credit-cards-2";
-// import "react-credit-cards-2/dist/es/styles-compiled.css";
-// import validatePaymentSchema from "../validation/paymentValidation";
-// import Form from "react-bootstrap/Form";
-// import { Alert, Col, FloatingLabel, Row } from "react-bootstrap";
-
-// const PaymentForm = () => {
-//   const [state, setState] = useState({
-//     number: "",
-//     expiry: "",
-//     cvc: "",
-//     name: "",
-//     focus: "",
-//   });
-//   const [inputsErrorState, setInputsErrorState] = useState(null);
-//   console.log("inputsErrorState", inputsErrorState);
-//   // newInputState[ev.target.id] = ev.target.value;
-//   // setState(newInputState);
-
-//   const handleInputChange = (evt) => {
-//     //matargel
-//     // const { name, value } = evt.target;
-//     // setState(prev => {
-//     //   const newState = { ...prev, [name]: value };
-//     //   const newjoiResponse = validatePaymentSchema(newState);
-//     //   if (Object.values(newjoiResponse).some(x => x.length > 0)) {
-//     //     setInputsErrorState(newjoiResponse);
-//     //     return prev;
-//     //   }
-//     //   return newState;
-//     // })
-//     console.log("poo");
-//     console.log("number",typeof state.number);
-//     const { name, value } = evt.target;
-//     setState((prev) => ({ ...prev, [name]: value }));
-//     const newjoiResponse = validatePaymentSchema(state);
-//     setInputsErrorState(newjoiResponse);
-//   };
-
-//   const handleInputFocus = (evt) => {
-//     setState((prev) => ({ ...prev, focus: evt.target.name }));
-//   };
-
-//   return (
-//     <div className="paymentCard">
-//       <h1 className="title">Payment</h1>
-//       <Cards
-//         number={state.number}
-//         expiry={state.expiry}
-//         cvc={state.cvc}
-//         name={state.name}
-//         focused={state.focus}
-//       />
-
-//       <Form>
-//         <Col xs={12} md={{ span: 6, offset: 3 }}>
-//           <Row className="mb-3">
-//             <Form.Group>
-//               <FloatingLabel
-//                 label="Card Number"
-//                 controlid="floatingInput"
-//                 className="mb-3"
-//               >
-//                 <Form.Control
-//                   className="paymentForm"
-//                 //   type="number"
-//                   name="number"
-//                   placeholder="Card Number"
-//                   value={state.number}
-//                   onChange={handleInputChange}
-//                   onFocus={handleInputFocus}
-//                 />
-//                 {inputsErrorState && inputsErrorState.number && (
-//                   <Alert type="invalid">
-//                     {inputsErrorState.number.map((item) => (
-//                       <div key={"number-errors" + item}>{item}</div>
-//                     ))}
-//                   </Alert>
-//                 )}
-//               </FloatingLabel>
-//             </Form.Group>
-//           </Row>
-//           <Row className="mb-3">
-//             <Form.Group>
-//               <FloatingLabel
-//                 label="Card expiry"
-//                 controlid="floatingInput"
-//                 className="mb-3"
-//               >
-//                 <Form.Control
-//                   className="paymentForm"
-//                   type="number"
-//                   name="expiry"
-//                   placeholder="Card expiry"
-//                   value={state.expiry}
-//                   onChange={handleInputChange}
-//                   onFocus={handleInputFocus}
-//                 />
-//                 {inputsErrorState && inputsErrorState.expiry && (
-//                   <Alert type="invalid">
-//                     {inputsErrorState.expiry.map((item) => (
-//                       <div key={"expiry-errors" + item}>{item}</div>
-//                     ))}
-//                   </Alert>
-//                 )}
-//               </FloatingLabel>
-//             </Form.Group>
-//           </Row>
-//           <Row className="mb-3">
-//             <Form.Group>
-//               <FloatingLabel
-//                 label="Card cvc"
-//                 controlid="floatingInput"
-//                 className="mb-3"
-//               >
-//                 <Form.Control
-//                   className="paymentForm"
-//                   type="string"
-//                   name="cvc"
-//                   placeholder="Card cvc"
-//                   value={state.cvc}
-//                   onChange={handleInputChange}
-//                   onFocus={handleInputFocus}
-//                 />
-//                 {inputsErrorState && inputsErrorState.cvc && (
-//                   <Alert type="invalid">
-//                     {inputsErrorState.cvc.map((item) => (
-//                       <div key={"cvc-errors" + item}>{item}</div>
-//                     ))}
-//                   </Alert>
-//                 )}
-//               </FloatingLabel>
-//             </Form.Group>
-//           </Row>
-//           <Row className="mb-3">
-//             <Form.Group>
-//               <FloatingLabel
-//                 label="Card name"
-//                 controlid="floatingInput"
-//                 className="mb-3"
-//               >
-//                 <Form.Control
-//                   className="paymentForm"
-//                   type="focus"
-//                   name="name"
-//                   placeholder="Card name"
-//                   value={state.name}
-//                   onChange={handleInputChange}
-//                   onFocus={handleInputFocus}
-//                 />
-//                 {inputsErrorState && inputsErrorState.name && (
-//                   <Alert type="invalid">
-//                     {inputsErrorState.name.map((item) => (
-//                       <div key={"name-errors" + item}>{item}</div>
-//                     ))}
-//                   </Alert>
-//                 )}
-//               </FloatingLabel>
-//             </Form.Group>
-//           </Row>
-//         </Col>
-//       </Form>
-//     </div>
-//   );
-// };
-
-// export default PaymentForm;
-
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { toast } from "react-toastify";
@@ -178,6 +9,8 @@ import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { Route, useNavigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
+import "../css/crm&pay.css";
+import "../css/popup.css"
 
 const PaymentForm = () => {
   const [state, setState] = useState({
@@ -306,6 +139,7 @@ const PaymentForm = () => {
           name={state.name}
           focused={state.focus}
         />
+        <Col md={{ span: 6, offset: 4 }} xs={12}>
         <form>
           <input
             className="paymentForm"
@@ -354,7 +188,6 @@ const PaymentForm = () => {
           />
           {state.nameError && <p className="error">{state.nameError}</p>}
         </form>
-      </div>
       <Button
         className="buttonPay"
         variant="warning"
@@ -368,6 +201,8 @@ const PaymentForm = () => {
       >
         Pay
       </Button>
+      </Col>
+      </div>
     </Container>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
-import "../css/navbar.css";
+import "../css/navbar&foter.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -17,6 +17,10 @@ import { darkThemeActions } from "../store/darkTheme";
 import { authActions } from "../store/auth";
 import SearchPartial from "./SearchPartial";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
+import ImageNavbar from "./ImageNavbar";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -184,7 +188,12 @@ const Navbars = () => {
               ""
             )}
           </Nav>
-            <SearchPartial />
+          <SearchPartial />
+          {isLoggedIn ? (
+            <ImageNavbar />
+          ) : (
+            ""
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

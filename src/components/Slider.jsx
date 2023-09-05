@@ -7,8 +7,45 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import { BsFillPinAngleFill } from "react-icons/bs";
 import CompSlider from "./compSlider";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Slider = () => {
+  const [inputState, setInputState] = useState([]);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       // const { data } = await axios.get("/auth/users");
+  //       // console.log("data", data);
+  //       // let newInputState = {
+  //       //   ...data,
+  //       // };
+  //       const allUser = await axios.get("/auth/users");
+  //       console.log("data", allUser.data);
+  //       setInputState(allUser.data);
+  //     } catch (err) {
+  //       toast.error("There is an error," + "" + err.response.data);
+  //     }
+  //   })();
+  // }, []);
+  useEffect(() => {
+    getAllUser();
+  }, []);
+
+  const getAllUser = async () => {
+    try {
+      const allUser = await axios.get("/auth/users");
+      console.log(allUser.data);
+      setInputState(allUser.data);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response);
+    }
+  };
+
+  console.log(inputState);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -28,22 +65,53 @@ const Slider = () => {
       items: 1,
     },
   };
+
   return (
+    // <Carousel
+    //   responsive={responsive}
+    //   infinite={true}
+    //   autoPlay={true}
+    //   autoPlaySpeed={1500}
+    // >
+    //   {inputState && Array.isArray(inputState)  &&
+    //     inputState.map((item) => (
+    //       <CompSlider
+    //         key={item._id + Date.now()}
+    //         id={item._id}
+    //         img={item.imageUrl}
+    //         alt={item.imageAlt}
+    //         recommendations={item.recommendations}
+    //       />
+    //     ))}
+    //  </Carousel>
+
     <Carousel
       responsive={responsive}
       infinite={true}
       autoPlay={true}
       autoPlaySpeed={1500}
     >
-      {keys.map((item) => (
-      <CompSlider
-       key={item._id + Date.now()}
-       id={item._id}
-       img={item.imageUrl}
-       alt={item.imageAlt}
-       recommendations={item.recommendations}
-       />
-       ))}
+      {/* {inputState &&
+        inputState.map((item) => ( */}
+      {inputState
+        .filter((item) => item.recommendations !== "")
+        .map((item) => (
+          <div key={item._id + Date.now()}>
+            <div className="div_recommenders">
+              <div className="recommenders"></div>
+              <Image
+                className="imge_recommenders"
+                src={item.imageUrl}
+                roundedCircle
+                alt={item.imageAlt}
+              />
+              <div className="icon_recommenders">
+                <BsFillPinAngleFill />
+              </div>
+              <h5 className="text_recommenders">{item.recommendations}</h5>
+            </div>
+          </div>
+        ))}
     </Carousel>
   );
 };

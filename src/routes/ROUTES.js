@@ -12,6 +12,7 @@ const ROUTES = {
   MYORDER:"/my-order",
   BOOKTABLE:"/book-Table",
   CONTACT:"/contact",
+  PROFAIL:"/profail"
   // EDIT:"/edit",
   //   PROFILE: "/profile",
   //   FAVCARD:"/favCards"

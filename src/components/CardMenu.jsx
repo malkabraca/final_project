@@ -20,7 +20,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import "../css/menuPage.css";
+
 
 const CardMenu = ({
   id,
@@ -197,11 +197,7 @@ const CardMenu = ({
         <Form.Group as={Col}>
           <Card className="cardMenu">
             {/* <Card.Img variant="top" src={imageUrl}alt={imageAlt} /> */}
-            <Image
-              src={imageUrl}
-              roundedCircle
-              className="img_title"
-            />
+            <Image src={imageUrl} roundedCircle className="img_title" />
             <Card.Body className="cardBody">
               <Card.Title className="card_title">{title}</Card.Title>
               <Card.Text className="card_text">{description}</Card.Text>
@@ -280,6 +276,7 @@ const CardMenu = ({
         </Form.Group>
       )}
     </Col>
+
   );
 };
 

@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MenuLogoutCom from "../components/CardMenuLogut.jsx";
 import PopupExample from "../components/popupOrder";
 import ROUTES from "../routes/ROUTES";
+import "../css/menu.css";
 
 const MenuLogoutPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
