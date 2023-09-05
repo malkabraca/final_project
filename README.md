@@ -7,7 +7,6 @@ This README provides an overview and instructions for setting up and running the
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## Introduction
