@@ -7,7 +7,7 @@ import MenuPage from "../pages/MenuPage";
 import EditCardPage from "../pages/EditCardPage";
 import CreateCardPage from "../pages/CreateCardPage";
 import CRMPage from "../pages/crmPage";
-import AboutPage from "../pages/AbouPage";
+import AboutPage from "../pages/AboutPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import LogoutPage from "../pages/LogoutPage";
 import MenuLogoutPage from "../pages/NoLoginMenuPage";
@@ -18,19 +18,6 @@ import SuperProtectedRouteEdit from "../components/SuperProtectedRouteEdit";
 import BookTable from "../components/BookTable";
 import Contact from "../pages/Contact";
 import Profail from "../pages/Profail";
-
-// import RP1 from "../pages/RP1";
-// import RP2 from "../pages/RP2";
-// import ProfilePage from "../pages/ProfilePage";
-// import LogoutPage from "../pages/LogoutPage";
-// import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
-// import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
-// import About from "../pages/About";
-// import MyCards from "../pages/MyCards";
-// import CreateCardPage from "../pages/CreateCardPage";
-// import FavCardsPage from "../pages/FavCards";
-// import InformationCard from "../pages/InformationCard";
-// import SandBox from "../pages/Sandbox";
 
 const Router = () => {
   return (

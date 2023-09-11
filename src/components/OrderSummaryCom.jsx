@@ -64,16 +64,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
       console.log(err);
     }
   };
-  // const totalOrder=()=>{
-  //   let total= []
-  //   {cardsArr && cardsArr.map((item) => (
-  //     total=[...total+(item.price*item.amount)]
-  //     ))}
-  //     console.log(total);
-  // return total
-  // }
-
-  // totalOrder()
+ 
 
   useEffect(() => {
     getOrderData();
@@ -109,6 +100,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
           <Table striped bordered hover>
             <thead>
               <tr>
+                <th></th>
                 <th>product</th>
                 <th>Amount</th>
                 <th>price</th>
@@ -120,6 +112,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
                 cardsArr.map((item) => (
                   <TableOrder
                     key={item._id + Date.now()}
+                    imageUrl={item.imageUrl}
                     idCardsArr={item._id}
                     title={item.title}
                     price={item.price}

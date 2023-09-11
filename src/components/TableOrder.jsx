@@ -7,35 +7,23 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const TableOrder = ({ idCardsArr, title, price,amount }) => {
+const TableOrder = ({ imageUrl, title, price, amount }) => {
   return (
-        <tr>
-          <td>{title}</td>
-          <td>{amount}</td>
-          <td>{price}$</td>
-          <td>{amount*price}$</td>
-        </tr>
+    <tr>
+      <td style={{ width: "150px" }}>
+        <img
+          src={imageUrl}
+          alt="Product Image"
+          className="imagealert"
+          style={{ maxWidth: "200%", maxHeight: "200%" }}
+        />
+      </td>
+      <td>{title}</td>
+      <td>{amount}</td>
+      <td>{price}$</td>
+      <td>{amount * price}$</td>
+    </tr>
   );
 };
 
 export default TableOrder;
-
-//   const [cardsArr, setCardsArr] = useState(null);
-//   const [orderIdMenu, setOrderIdMenu] = useState(null);
-//   const [cardrIdMenu, setCardIdMenu] = useState({});
-//   const navigate = useNavigate();
-//   let qparams = useQueryParams();
-//   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
-//   const id = jwt_decode(localStorage.token)._id;
-//   useEffect(() => {
-//     const completionOrder = async () => {
-//       try {
-//         const orders = await axios.get("/orders/" + id);
-//         setOrderIdMenu(orders.data);
-//         console.log(orders.data);
-//       } catch (err) {
-//         toast.error(err.response._id);
-//       }
-//     };
-//     completionOrder();
-//   }, [orderIdMenu]);

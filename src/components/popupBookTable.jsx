@@ -39,6 +39,8 @@ const PopupBookTable = () => {
   const navigate = useNavigate();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
+console.log("inputState",inputState);
+
   const handeleBtnContinued = () => {
     setFrom(!from);
   };
@@ -114,7 +116,7 @@ const PopupBookTable = () => {
     for (let hour = startHour; hour <= endHour; hour++) {
       const formattedHour = String(hour).padStart(2, '0');
       options.push(
-        <option key={formattedHour} value={formattedHour}>
+        <option key={formattedHour} value={`${formattedHour}:00`}>
           {formattedHour}:00
         </option>
       );

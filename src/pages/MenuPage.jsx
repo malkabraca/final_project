@@ -6,6 +6,7 @@ import {
   Form,
   Image,
   ListGroup,
+  Nav,
   Row,
   Spinner,
 } from "react-bootstrap";
@@ -22,6 +23,7 @@ import ButtonCreatCom from "../components/ButtonCreatCom";
 import CompletionOfAnOrder from "../components/OrderSummaryCom";
 import "../css/menu.css";
 import "../css/pages.css";
+import ImagePopup from "../components/ImagePopup";
 
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
@@ -132,16 +134,14 @@ const MenuPage = () => {
   };
   const categories = [
     "Main dishes",
+    "Salads",
     "drinking",
-    "Category 3",
-    "Category 4",
-    "Category 5",
   ];
 
   const filterItemsByCategory = (category) => {
     return cardsArr.filter((item) => item.category === category);
   };
-
+console.log("cardsArr",cardsArr);
   return (
     <Container>
       <Button

@@ -9,19 +9,21 @@ const MyOrderCom = ({ item, order}) => {
         <Form.Label
           className="textMyOrder"
           controlid="floatingInput"
-          label={item + "*"}
+          label={item + ":"}
           // className="mb-3"
-        >{item} </Form.Label>
-           <Col sm={10}>
+        >
+          {item +" " +":"}
+        </Form.Label>
+        <Col sm={10}>
           <Form.Control
             name={item}
             id={item}
             type={item}
-            className="colinput"
+            className={`inputMyOrder transparent-background white-text`}
             value={order ? order[item] : ""}
             readOnly
           />
-          </Col>
+        </Col>
       </Form.Group>
     </Col>
   );

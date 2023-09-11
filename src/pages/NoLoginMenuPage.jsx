@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Form, Image, Row, Spinner } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Form,
+  Image,
+  Nav,
+  Row,
+  Spinner,
+} from "react-bootstrap";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -70,46 +78,42 @@ const MenuLogoutPage = () => {
   };
   const categories = [
     "Main dishes",
+    "Salads",
     "drinking",
-    "Category 3",
-    "Category 4",
-    "Category 5",
   ];
   return (
     <Container>
       <h1 className="title"> Menu</h1>
-
-      <Form.Check
-        className="radioMenu"
-        inline
-        label="For the full menu"
-        name="group1"
-        type="radio"
-        onClick={() => handleCategoryClick(null)}
-      />
-      <Form.Check
-        className="radioMenu"
-        inline
-        label="drinking"
-        name="group1"
-        type="radio"
-        onClick={() => handleCategoryClick("drinking")}
-      />
-      <Form.Check
-        className="radioMenu"
-        inline
-        label="Main Dishes"
-        name="group1"
-        type="radio"
-        onClick={() => handleCategoryClick("Main dishes")}
-      />
-
-      <Form.Check inline label="4" name="group1" type="radio" />
-      <Form.Check inline label="5" name="group1" type="radio" />
+      <Nav variant="underline" defaultActiveKey="/home" className="nav_catgory">
+        <Nav.Item className="nav_item_catgory">
+          <Nav.Link  eventKey="link-1" onClick={() => handleCategoryClick(null)}>All</Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="nav_item_catgory">
+          <Nav.Link
+            eventKey="link-2"
+            onClick={() => handleCategoryClick("drinking")}
+          >
+            drinking
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="nav_item_catgory">
+          <Nav.Link
+            eventKey="link-3"
+            onClick={() => handleCategoryClick("Main dishes")}
+          >
+            Main Dishes
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="nav_item_catgory">
+          <Nav.Link
+            eventKey="link-4"
+            onClick={() => handleCategoryClick("Salads")}
+          >
+           Salads
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
       <Row>
-        {/* <Col md={4} lg={2} sm={6}> */}
-
-        {/* {cardsArr.map((item) => ( */}
         <h2 className="subtitleh2">{selectedCategory}</h2>
         {selectedCategory !== null
           ? cardsArr
@@ -125,22 +129,42 @@ const MenuLogoutPage = () => {
                   price={item.price}
                 />
               ))
-          : categories.map((category) => (
-              <div key={category}>
-                <h3 className="subtitleh2">{category}</h3>
+          : 
+          // categories.map((category) => (
+          //     <div key={category}>
+          //       <h3 className="subtitleh2">{category}</h3>
+          //       {filterItemsByCategory(category).map((item) => (
+          //         <MenuLogoutCom
+          //           key={item._id + Date.now()}
+          //           id={item._id}
+          //           imageUrl={item.imageUrl}
+          //           imageAlt={item.imageAlt}
+          //           title={item.title}
+          //           description={item.description}
+          //           price={item.price}
+          //         />
+          //       ))}
+          //     </div>
+          //   ))}
+          categories.map((category) => (
+            <div key={category}>
+              <h3 className="subtitleh2">{category}</h3>
+              <div className="row">
                 {filterItemsByCategory(category).map((item) => (
-                  <MenuLogoutCom
-                  key={item._id + Date.now()}
-                  id={item._id}
-                  imageUrl={item.imageUrl}
-                  imageAlt={item.imageAlt}
-                  title={item.title}
-                  description={item.description}
-                  price={item.price}
-                />
+                  <div className="col-md-6" key={item._id + Date.now()}>
+                    <MenuLogoutCom
+                      id={item._id}
+                      imageUrl={item.imageUrl}
+                      imageAlt={item.imageAlt}
+                      title={item.title}
+                      description={item.description}
+                      price={item.price}
+                    />
+                  </div>
                 ))}
               </div>
-            ))}
+            </div>
+          ))}  
       </Row>
       <PopupExample variant="warning" onClick={handleButtonClick} />
     </Container>
@@ -149,7 +173,6 @@ const MenuLogoutPage = () => {
 
 export default MenuLogoutPage;
 
-// {selectedCategory !== null
 //   ? cardsArr
 //       .filter((item) => item.category === selectedCategory)
 //       .map((item) => (

@@ -119,3 +119,12 @@
  .product-details {
     width: 200px;
   }
+  .nav_catgory{
+    justify-content: center;
+   } 
+  .nav_item_catgory a{color:  rgb(252, 215, 94);
+    font-weight: 600;
+  }
+   .nav_item_catgory a:hover
+   {color: aliceblue;
+  }
