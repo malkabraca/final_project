@@ -1,4 +1,4 @@
-import { Col, FloatingLabel, Form } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 
 const MyOrderCom = ({ item, order}) => {
   if (item === "orderStatus") return;
@@ -10,7 +10,6 @@ const MyOrderCom = ({ item, order}) => {
           className="textMyOrder"
           controlid="floatingInput"
           label={item + ":"}
-          // className="mb-3"
         >
           {item +" " +":"}
         </Form.Label>

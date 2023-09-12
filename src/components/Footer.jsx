@@ -14,7 +14,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import "../css/navbar&foter.css";
 
 const handleClick = () => {
-  const whatsappNumber = "+972552540326";
+  const whatsappNumber = "+972502800840";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello%2C%20I%20want%20to%20chat%20with%20you!`;
 
@@ -43,7 +43,7 @@ const renderTooltip = (props) => {
 const openEmailBox = () => {
   const subject = encodeURIComponent("Regarding Your Inquiry");
   const url =
-    "https://mail.google.com/mail/?view=cm&to=chani.wolpo@gmail.com&su=" +
+    "https://mail.google.com/mail/?view=cm&to=m0773004446@gmail.com&su=" +
     subject;
   window.open(url);
 };
@@ -52,7 +52,7 @@ const Footer = () => {
     <footer className="footer">
       <Container className="center-content">
         <div className="center-content">
-          <Image className="logo_footer" src="../image/logo1.png" />
+          <Image className="logo_footer" src="../Image/IMG_logo.jpg" />
 
           <h6 className="name_footer">Italian Restaurant</h6>
           <div className="div_footer">
@@ -86,9 +86,6 @@ const Footer = () => {
             <p className="text_footer">phone:0502800840</p>
           </div>
           <div className="div_footer">
-            {/* <Link>
-              <BsEnvelopeAt className="icon_footer" />
-            </Link> */}
             <Link onClick={openEmailBox}>
               <BsEnvelopeAt className="icon_footer" />
             </Link>
@@ -105,7 +102,6 @@ const Footer = () => {
 
 export default Footer;
 
-// const Footer = () => {
 //   const [isOpen,setIsOpen]=useState(false)
 
 //   const currentHour = new Date().getHours();

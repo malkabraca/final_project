@@ -1,17 +1,11 @@
 import { Container, Row } from "react-bootstrap";
 import ROUTES from "../routes/ROUTES";
-import CarouselHome from "../components/carosel.jsx";
 import CardFood from "../components/carsd.jsx";
-import Button from "react-bootstrap/Button";
-import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupExample from "../components/popupOrder";
-import PaymentForm from "../components/PaymentForm";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import PopupBookTable from "../components/popupBookTable";
 import Slider from "../components/Slider";
-import"../css/home_page.css"
+import "../css/home_page.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -23,26 +17,22 @@ const HomePage = () => {
       <h1 className="title">Welcome</h1>
       <Container className="phome">
         <p>
-          Welcome to our exceptional meat chef restaurant, a haven for meat
-          lovers where the art of cooking meat reaches new heights. Step into a
-          world of savory delights, where the finest cuts of meat are
-          transformed into culinary masterpieces. Our restaurant is dedicated to
-          the pursuit of excellence, with a passion for showcasing the full
-          potential of meat through innovative and skillful techniques.
+          Located in a charming corner of the city, the Italian chef
+          restaurant-The Senior Restaurant is a culinary gem that immerses
+          diners in the essence of Italy. The fragrant smells of fresh bread and
+          aromatic sauces permeate the air, beckoning hungry patrons. With a
+          menu inspired by traditional Italian recipes, each dish is a symphony
+          of authentic flavors and premium ingredients.
         </p>
         <p>
-          As you enter, you'll be greeted by a warm and inviting atmosphere that
-          sets the stage for an extraordinary dining experience. The aroma of
-          sizzling steaks and slow-roasted ribs fills the air, tantalizing your
-          senses and whetting your appetite. Our dedicated meat chef is a true
-          maestro, expertly working with different cuts and flavors to create
-          dishes that are succulent, tender, and bursting with flavor.
+          Skilled chefs, trained in the art of Italian cuisine, infuse each
+          plate with passion and precision, guaranteeing an exceptional dining
+          experience. From classic pasta dishes to indulgent tiramisu, this
+          restaurant captures the true spirit of Italian gastronomy, leaving
+          guests wanting more.
         </p>
 
         <div className="divbuttonehome">
-          {/* <Button variant="warning" className="buttonhome">
-            Book a table
-          </Button> */}
           <PopupBookTable variant="warning" />
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
@@ -50,7 +40,7 @@ const HomePage = () => {
       </Container>
       <CardFood />
       <h3 className="subtitle">Our recommenders</h3>
-     <Slider />
+      <Slider />
     </Container>
   );
 };

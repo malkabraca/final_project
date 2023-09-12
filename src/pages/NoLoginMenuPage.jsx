@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  Button,
   Col,
   Container,
   Form,
@@ -17,11 +18,13 @@ import MenuLogoutCom from "../components/CardMenuLogut.jsx";
 import PopupExample from "../components/popupOrder";
 import ROUTES from "../routes/ROUTES";
 import "../css/menu.css";
+import { BsCardHeading, BsListUl } from "react-icons/bs";
 
 const MenuLogoutPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [listOrCard, setListOrCard] = useState(true);
   const navigate = useNavigate();
 
   let qparams = useQueryParams();
@@ -36,6 +39,10 @@ const MenuLogoutPage = () => {
         toast.error("err from axios" + "" + err.response.data.msg);
       });
   }, []);
+
+  const handelListOrCard = () => {
+    setListOrCard(!listOrCard);
+  };
 
   const handleButtonClick = () => {
     navigate(ROUTES.MENU);
@@ -83,6 +90,13 @@ const MenuLogoutPage = () => {
   ];
   return (
     <Container>
+    <Button
+        variant="warning"
+        className="buttonList"
+        onClick={handelListOrCard}
+      >
+        {listOrCard ? <BsCardHeading /> : <BsListUl />}
+      </Button>
       <h1 className="title"> Menu</h1>
       <Nav variant="underline" defaultActiveKey="/home" className="nav_catgory">
         <Nav.Item className="nav_item_catgory">
@@ -127,25 +141,10 @@ const MenuLogoutPage = () => {
                   title={item.title}
                   description={item.description}
                   price={item.price}
+                  listOrCard={listOrCard}
                 />
               ))
           : 
-          // categories.map((category) => (
-          //     <div key={category}>
-          //       <h3 className="subtitleh2">{category}</h3>
-          //       {filterItemsByCategory(category).map((item) => (
-          //         <MenuLogoutCom
-          //           key={item._id + Date.now()}
-          //           id={item._id}
-          //           imageUrl={item.imageUrl}
-          //           imageAlt={item.imageAlt}
-          //           title={item.title}
-          //           description={item.description}
-          //           price={item.price}
-          //         />
-          //       ))}
-          //     </div>
-          //   ))}
           categories.map((category) => (
             <div key={category}>
               <h3 className="subtitleh2">{category}</h3>
@@ -159,6 +158,7 @@ const MenuLogoutPage = () => {
                       title={item.title}
                       description={item.description}
                       price={item.price}
+                      listOrCard={listOrCard}
                     />
                   </div>
                 ))}

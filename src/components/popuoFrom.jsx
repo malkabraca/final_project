@@ -11,11 +11,9 @@ return(
               id={item}
               label={item}
               name={item}
-              // className="colinput"
               autoComplete={item}
               value={inputState[item]}
               onChange={onChange}
-              /*  isValid={inputState.name}*/
               isInvalid={inputsErrorState && inputsErrorState[item]}
             />
             {inputsErrorState && inputsErrorState[item]  && (

@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
 import "../css/navbar&foter.css";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
 import ROUTES from "../routes/ROUTES";
-import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { darkThemeActions } from "../store/darkTheme";
 import { authActions } from "../store/auth";
 import SearchPartial from "./SearchPartial";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
-import jwt_decode from "jwt-decode";
 import ImageNavbar from "./ImageNavbar";
 
 const Navbars = () => {
@@ -29,11 +17,6 @@ const Navbars = () => {
   );
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const dispatch = useDispatch();
-
-
-  const changeTheme = () => {
-    dispatch(darkThemeActions.changeTheme());
-  };
 
   const logoutClick = () => {
     localStorage.clear();
@@ -45,7 +28,7 @@ const Navbars = () => {
   };
 
   return (
-    <Navbar className="navbar" expand="lg" /* className="bg-body-tertiary" */>
+    <Navbar className="navbar" expand="lg">
       <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -58,7 +41,6 @@ const Navbars = () => {
               <Link
                 id="nav"
                 to={ROUTES.HOME}
-                // className={activeLink === "Home" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 Home
@@ -69,7 +51,6 @@ const Navbars = () => {
               <Link
                 id="nav"
                 to={ROUTES.ABOUT}
-                // className={activeLink === "Home" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 About
@@ -79,7 +60,6 @@ const Navbars = () => {
               <Link
                 id="nav"
                 to={ROUTES.CONTACT}
-                // className={activeLink === "Home" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 Contact
@@ -90,7 +70,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.MENULOGUT}
-                  // className={activeLink === "Home" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   General-Menu
@@ -105,7 +84,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.MENULOGUT}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   Menu
@@ -120,7 +98,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.MYORDER}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   My Order
@@ -134,7 +111,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.LOGOUT}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={logoutClick}
                 >
                   Logout
@@ -149,7 +125,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.LOGIN}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   Login
@@ -163,7 +138,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.REGISTER}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   Register
@@ -178,7 +152,6 @@ const Navbars = () => {
                 <Link
                   id="nav"
                   to={ROUTES.CRM}
-                  // className={activeLink === "Link" ? "active" : ""}
                   onClick={handleLinkClick}
                 >
                   CRM

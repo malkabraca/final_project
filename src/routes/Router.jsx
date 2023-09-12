@@ -15,9 +15,9 @@ import PaymentForm from "../components/PaymentForm";
 import MyOrder from "../pages/MyOrder";
 import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import SuperProtectedRouteEdit from "../components/SuperProtectedRouteEdit";
-import BookTable from "../components/BookTable";
 import Contact from "../pages/Contact";
 import Profail from "../pages/Profail";
+import OrderDetails from "../pages/OrderDetails";
 
 const Router = () => {
   return (
@@ -29,7 +29,7 @@ const Router = () => {
       <Route path={ROUTES.MENULOGUT} element={<MenuLogoutPage />} />
       <Route path={ROUTES.LOGOUT} element={<ProtectedRoute />} />
       <Route path={ROUTES.CONTACT} element={<Contact />} />
-   
+      <Route path="/crm/:id" element={<OrderDetails />} />
       <Route path={ROUTES.PROFAIL} element={<Profail />} />
       <Route
         path={ROUTES.MENU}
@@ -59,7 +59,6 @@ const Router = () => {
           <SuperProtectedRoute isAdmin={true} element={<CreateCardPage />} />
         }
       />
-      <Route path={ROUTES.BOOKTABLE} element={<BookTable />} />
       <Route path="*" element={<h1>404</h1>} />
       {/* <Route path={ROUTES.PAYMENT} element={<PaymentForm />} /> */}
       {/* <Route path={ROUTES.CREATE} element={<CreateCardPage />} /> */}

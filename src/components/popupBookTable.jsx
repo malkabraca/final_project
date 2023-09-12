@@ -3,26 +3,19 @@ import React, { useState } from "react";
 import {
   Button,
   Col,
-  FloatingLabel,
   Form,
-  InputGroup,
   Modal,
   Row,
-  Container,
 } from "react-bootstrap";
-import { BsFillHandThumbsUpFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import validateTableOrders from "../validation/orderTableValidtion";
 import ROUTES from "../routes/ROUTES";
-import popuoFrom from "../components/popuoFrom";
 import PopuoFrom from "../components/popuoFrom";
 import { useSelector } from "react-redux";
-import BookTable from "./BookTable";
 import {
   BsArrowLeftShort,
   BsArrowRightShort,
-  BsStopwatch,
 } from "react-icons/bs";
 
 const PopupBookTable = () => {
@@ -39,7 +32,6 @@ const PopupBookTable = () => {
   const navigate = useNavigate();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
-console.log("inputState",inputState);
 
   const handeleBtnContinued = () => {
     setFrom(!from);
@@ -51,7 +43,6 @@ console.log("inputState",inputState);
       setInputsErrorState(joiResponse);
 
       if (joiResponse) {
-        console.log(joiResponse);
         toast.error("Invalid user information");
         return;
       }
@@ -69,7 +60,6 @@ console.log("inputState",inputState);
       handleClose();
       navigate(ROUTES.HOME);
     } catch (err) {
-      console.log(err);
       toast.error("Invalid user information");
     }
   };
@@ -101,7 +91,6 @@ console.log("inputState",inputState);
     let startHour = 11;
     let endHour = 23;
 
-    // If the selected date is today, update startHour and endHour accordingly
     if (
       selectedDate.getDate() === currentDate.getDate() &&
       selectedDate.getMonth() === currentDate.getMonth() &&
@@ -125,13 +114,6 @@ console.log("inputState",inputState);
     return options;
   };
 
-
-  const formatTime = (hour) => {
-    const ampm = hour >= 12 ? "PM" : "AM";
-    const formattedHour = hour > 12 ? hour - 12 : hour;
-    return `${formattedHour}:00 ${ampm}`;
-  };
-
   const getCurrentDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -139,7 +121,6 @@ console.log("inputState",inputState);
     const day = String(today.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
-
 
   const keys = ["name", "phone"];
 
@@ -158,20 +139,16 @@ console.log("inputState",inputState);
           <Modal.Title>my order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <BookTable /> */}
-          {/* <Container className="table-page"> */}
           <div className="table-page">
             <Form>
               <Row className="mb-3">
                 <Col xs={12} md={4}>
-                  {/* <Form.Group controlId="formDate"> */}
                   <Form.Group>
                     <Form.Label>Date</Form.Label>
                     <Form.Control
                       id="date"
                       type="date"
                       value={inputState.date}
-                      // onChange={(e) => setDate(e.target.value)}
                       onChange={handleInputChange}
                       required
                       className="inputBookTable"
@@ -180,7 +157,6 @@ console.log("inputState",inputState);
                   </Form.Group>
                 </Col>
                 <Col xs={12} md={4}>
-                  {/* <Form.Group controlId="formTime"> */}
                   <Form.Group>
                     <Form.Label>Time</Form.Label>
                     <Form.Select
@@ -188,7 +164,6 @@ console.log("inputState",inputState);
                       id="time"
                       value={inputState.time}
                       onChange={handleInputChange}
-                      // onChange={(e) => setTime(e.target.value)}
                       required
                       className="inputBookTable"
                     >
@@ -199,17 +174,14 @@ console.log("inputState",inputState);
                 </Col>
                 <Col xs={12} md={4}>
                   <Form.Group controlId="formNumOfPeople">
-                  {/* <Form.Group controlId="formNumOfPeople"> */}
                     <Form.Label>Number of guests</Form.Label>
                     <Form.Select
                       as="select"
                       id="numOfPeople"
                       value={inputState.numOfPeople}
                       onChange={handleInputChange}
-                      // onChange={(e) => setNumOfPeople(e.target.value)}
                       required
                       className="inputBookTable"
-                      //   style={{ height: '120px', overflowY: 'auto' }}
                     >
                       {Array.from({ length: 10 }, (v, i) => i + 1).map(
                         (num) => (
@@ -236,7 +208,6 @@ console.log("inputState",inputState);
                 <BsArrowLeftShort />
               </Button>
             </Col>
-          {/* </Container> */}
           </div>
           {from ? (
             <Form>

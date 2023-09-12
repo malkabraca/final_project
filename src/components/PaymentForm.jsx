@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 import "../css/crm&pay.css";
 import "../css/popup.css"
@@ -24,7 +24,7 @@ const PaymentForm = () => {
     nameError: null,
     cvcError: null,
   });
-  console.log(state);
+
   const [orderId, setOrderId] = useState({});
   const navigate = useNavigate();
   const id = jwt_decode(localStorage.token)._id;
@@ -47,7 +47,6 @@ const PaymentForm = () => {
       toast.success("An order is currently in the works");
       navigate(ROUTES.HOME)
     } catch (err) {
-      console.log(err.response);
       toast.error(err.response.data);
     }
   };

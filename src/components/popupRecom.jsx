@@ -88,7 +88,7 @@ const Recommendation = () => {
                 count={5}
                 onChange={handleRatingChange}
                 size={24}
-                activeColor="#ffd700"
+                activeColor="red"
                 value={rating}
               />
               <Form.Label>My Recommendation</Form.Label>

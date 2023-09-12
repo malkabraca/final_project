@@ -26,7 +26,6 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
           label={item + "*"}
           className="mb-3"
         >
-          {/* <Form.Control type={item} placeholder={item} /> */}
           <Form.Control
             name={item}
             id={item}
@@ -62,8 +61,6 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             fullwidth="true"
             type={item}
             className="colinput"
-            // label={item}
-            /*   placeholder={item} */
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
             isValid={inputState[item]}

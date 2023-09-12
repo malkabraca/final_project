@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "../css/crm&pay.css";
 import TableOrderCRM from "../components/TableOrderCRM";
 import TableUsers from "../components/TableUsersCRM";
+import { useNavigate } from "react-router-dom";
 const CRMPage = () => {
   const [order, setOrder] = useState();
   const [table, setTable] = useState();
@@ -15,7 +16,7 @@ const CRMPage = () => {
   const [usersView, setUsersView] = useState(true);
   const [ordersView, setordersView] = useState(true);
   const [tableView, setTableView] = useState(true);
-
+  const navigate = useNavigate();
   const handelusersView = () => {
     setUsersView(true);
     setordersView(false);
@@ -82,7 +83,10 @@ const CRMPage = () => {
       toast.error(err.response);
     }
   };
-
+ 
+  const handleInfoCrm = (id) => {
+    navigate(`/crm/${id}`);
+  };
 
   return (
     <Container>
@@ -142,6 +146,7 @@ const CRMPage = () => {
                     orderStatus={item.orderStatus}
                     createdAt={item.createdAt}
                     menuOrder={item.menuOrder}
+                    onInfo={handleInfoCrm}
                   />
                 ))}
             </tbody>

@@ -15,7 +15,7 @@ import "../css/myOrder.css";
 import TableOrder from "../components/TableOrder";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
-const MyOrder = () => {
+const CRMorder = () => {
   const [order, setOrder] = useState(null);
   const [menuOrder, setMenuOrder] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
@@ -93,11 +93,9 @@ const MyOrder = () => {
   const handeleBtnContinued = () => {
     setFrom(!from);
   };
-
+ 
   const keys = Object.keys(order);
-  console.log(cardsArr);
-  console.log("menuOrder", menuOrder);
-  
+
   return (
     <Container>
       <h1 className="title">My Order</h1>
@@ -204,16 +202,6 @@ const MyOrder = () => {
            ) : (
             ""
           )}
-        {/* <Col md={{ span: 6, offset: 4 }} xs={12}>
-          <Button
-            variant="warning"
-            type="submit"
-            onClick={handleCancelBtnClick}
-            className="colinput"
-          >
-            GO TO HOME PAGE
-          </Button>
-        </Col> */}
       </Col>
       <Col>
         <Row className="mb-3">
@@ -231,4 +219,4 @@ const MyOrder = () => {
     </Container>
   );
 };
-export default MyOrder;
+export default CRMorder;

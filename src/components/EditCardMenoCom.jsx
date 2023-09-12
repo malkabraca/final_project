@@ -28,7 +28,6 @@ const EditCardMenoCom = ({ item, inputState, onChange, inputsErrorState }) => {
           label={item + "*"}
           className="mb-3"
         >
-          {/* <Form.Control type={item} placeholder={item} /> */}
           <Form.Control
             name={item}
             id={item}
@@ -36,7 +35,6 @@ const EditCardMenoCom = ({ item, inputState, onChange, inputsErrorState }) => {
             className="colinput"
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
-            // isValid={inputState[item]}
             isInvalid={inputsErrorState && inputsErrorState[item]}
           />
           {inputsErrorState && inputsErrorState[item] && (

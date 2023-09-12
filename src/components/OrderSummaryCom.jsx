@@ -16,10 +16,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
   const [totalSum, setTotalSum] = useState(0);
   const [show, setShow] = useState(false);
   const [cardsArr, setCardsArr] = useState(null);
-
   const navigate = useNavigate();
-  let qparams = useQueryParams();
-  const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -28,14 +25,8 @@ const CompletionOfAnOrder = ({ orderId }) => {
 
   const completionOrderMenu = async () => {
     try {
-      console.log(orderId);
       const orders = await axios.get("/orders/" + orderId);
-      // console.log("orders",orders);
       const completion = orders.data.menuOrder;
-      // console.log("completion",completion);
-      // if (completion.length===0) {
-      //   toast.error("There are no details in the order");
-      // }
       return completion;
     } catch (err) {
       toast.error(err.response._id);
@@ -44,12 +35,9 @@ const CompletionOfAnOrder = ({ orderId }) => {
 
   const getOrderData = async () => {
     const orderArr = await completionOrderMenu();
-    console.log("orderArr",orderArr);
     if (!orderArr) {
       return
     }
-    // const firstElements = orderArr.map((array) => array[0]);
-    // const tElements = orderArr.map((array) => array[1]);
     let card = [];
     try {
       const cards = await axios.get("/cards");
@@ -61,7 +49,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
       });
       setCardsArr(card);
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data);
     }
   };
  

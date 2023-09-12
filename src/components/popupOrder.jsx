@@ -2,19 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import {
   Button,
-  Col,
-  FloatingLabel,
   Form,
-  InputGroup,
   Modal,
-  Row,
 } from "react-bootstrap";
-import { BsFillHandThumbsUpFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import validateOrders from "../validation/orderValidtion";
 import ROUTES from "../routes/ROUTES";
-import popuoFrom from "../components/popuoFrom";
 import PopuoFrom from "../components/popuoFrom";
 import { useSelector } from "react-redux";
 
@@ -27,18 +21,13 @@ const PopupExample = () => {
     street: "",
     houseNumber: "",
     takeAway: false,
-    // isBusiness: false,
   });
-  // console.log(inputState);
   const [inputsErrorState, setInputsErrorState] = useState(null);
-  // console.log(inputsErrorState);
+ 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
-  let OrderNumber;
-  const isLoggedIn = useSelector(
-    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
-  );
+
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateOrders(inputState);
@@ -49,9 +38,6 @@ const PopupExample = () => {
         toast.error("Invalid user information");
         return;
       }
-      // if (inputState.isBusiness === "") {
-      //   inputState.isBusiness = false;
-      // }
       if (inputState.takeAway === "") {
         inputState.takeAway = false;
       }
@@ -74,7 +60,6 @@ const PopupExample = () => {
     }
   };
   const handleInputChange = (ev) => {
-    // console.log(ev.target.value);
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
     setInputState(newInputState);
@@ -106,15 +91,6 @@ const PopupExample = () => {
       <Button variant="warning" onClick={handlButtenOrder} className="buttonhome">
         Click to order
       </Button>
-
-      {/* {isLoggedIn ? (
-        <Button variant="warning" onClick={handleShow} className="buttonhome">
-          Click to order
-        </Button>
-      ) : (
-        ""
-      )} */}
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="colinput">
           <Modal.Title>my order</Modal.Title>
