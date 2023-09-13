@@ -1,4 +1,4 @@
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -10,14 +10,14 @@ import validateRegisterSchema from "../validation/registerValidation";
 import axios from "axios";
 import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
-import "../css/pages.css"
+import "../css/pages.css";
 
 const RegisterPage = () => {
   const [inputState, setInputState] = useState({
     firstName: "",
     lastName: "",
     imageUrl: "",
-    imageAlt: "", 
+    imageAlt: "",
     phone: "",
     email: "",
     password: "",
@@ -36,15 +36,15 @@ const RegisterPage = () => {
       if (joiResponse) {
         return;
       }
-      if (inputState.imageUrl == "") {
+      if (inputState.imageUrl === "") {
         inputState.imageUrl =
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
       }
-      if (inputState.imageAlt == "") {
+      if (inputState.imageAlt === "") {
         inputState.imageAlt = "man/Woman";
       }
       await axios.post("/auth/users", {
-       firstName: inputState.firstName,
+        firstName: inputState.firstName,
         lastName: inputState.lastName,
         phone: inputState.phone,
         email: inputState.email,
@@ -56,19 +56,15 @@ const RegisterPage = () => {
         houseNumber: inputState.houseNumber,
         zipCode: inputState.zipCode,
         biz: inputState.biz,
-         
       });
-  navigate(ROUTES.LOGIN); 
+      navigate(ROUTES.LOGIN);
     } catch (err) {
-      console.log(err.response.data);
- toast.error("Invalid user information");
-
+      toast.error("Invalid user information");
     }
- 
   };
-   const cancel = () => {
-     navigate(ROUTES.HOME);
-   };
+  const cancel = () => {
+    navigate(ROUTES.HOME);
+  };
   const handleInputChange = (ev) => {
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
@@ -81,15 +77,14 @@ const RegisterPage = () => {
     newInputState["biz"] = ev.target.checked;
     setInputState(newInputState);
   };
-  
+
   const keys = Object.keys(inputState);
-  
 
   return (
     <Container>
       <h1 className="title">register</h1>
       <Form>
-        <Col md={{ span: 6, offset: 12 }} xs={12}>
+      <Col xs={12} md={{ span: 6, offset: 3 }}>
           <Row className="mb-3">
             {keys.map((item) => (
               <RegisterCom
@@ -125,7 +120,6 @@ const RegisterPage = () => {
               className="colinput"
               variant="warning"
               onClick={handeleBtnClick}
-              /* disabled={inputsErrorState !== null}  */
             >
               Sign Up
             </Button>

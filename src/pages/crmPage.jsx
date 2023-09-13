@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Col, Nav, Container } from "react-bootstrap";
+import {Nav, Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import TableCRM from "../components/TableCRM";
 import { useState } from "react";
@@ -46,10 +46,8 @@ const CRMPage = () => {
   const getOrders = async () => {
     try {
       const orders = await axios.get("/orders");
-      console.log(orders.data);
       setOrder(orders.data);
     } catch (err) {
-      console.log(err);
       toast.error(err.response);
     }
   };
@@ -61,10 +59,8 @@ const CRMPage = () => {
   const getOrdersTable = async () => {
     try {
       const tableOrders = await axios.get("/ordersTable");
-      console.log(tableOrders.data);
       setTable(tableOrders.data);
     } catch (err) {
-      console.log(err);
       toast.error(err.response);
     }
   };
@@ -76,10 +72,8 @@ const CRMPage = () => {
   const getUsers = async () => {
     try {
       const allUsers = await axios.get("/auth/users");
-      console.log(allUsers.data);
       setUsers(allUsers.data);
     } catch (err) {
-      console.log(err);
       toast.error(err.response);
     }
   };

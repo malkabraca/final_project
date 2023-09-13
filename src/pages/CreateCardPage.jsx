@@ -29,7 +29,6 @@ const CreateCardPage = () => {
         navigate(ROUTES.HOME);
       }
     } catch (err) {
-      console.log(err);
       toast.error("The operation failed");
     }
   };
@@ -37,16 +36,13 @@ const CreateCardPage = () => {
   const handleCancelBtnClick = (ev) => {
     navigate(ROUTES.HOME);
   };
-console.log(inputState);
   const handleInputChange = (ev) => {
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
     setInputState(newInputState);
     const joiResponse = validateCreateSchema(newInputState);
-    console.log(joiResponse);
     setInputsErrorsState(joiResponse);
   };
-  console.log(inputState.imageUrl);
 
   const keys = Object.keys(inputState);
   return (
@@ -64,11 +60,6 @@ console.log(inputState);
         </Col>
         <Col md={{ span: 6, offset: 3 }} xs={12}>
           <Row className="mb-3">
-            
-            {/* <Col xs={6} md={4}>
-              <Image src={inputState.imageUrl} rounded />
-            </Col> */}
-            {/* <Col> */}
             {keys.map((item) => (
               <EditCardMenoCom
                 key={item}
@@ -78,13 +69,6 @@ console.log(inputState);
                 inputsErrorState={inputsErrorsState}
               />
             ))}
-     {/* <Form.Select aria-label="Default select example">
-            <option>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </Form.Select> */}
-            {/* </Col> */}
             </Row>
             <Col>
               <Row className="mb-3">
@@ -102,7 +86,6 @@ console.log(inputState);
                   className="colinput"
                   variant="warning"
                     onClick={handleSaveBtnClick}
-                  /* disabled={inputsErrorState !== null}  */
                 >
                  SEVE
                 </Button>

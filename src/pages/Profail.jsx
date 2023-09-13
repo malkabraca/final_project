@@ -1,12 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
-
 import ROUTES from "../routes/ROUTES";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
-import { BsFillPencilFill } from "react-icons/bs";
 import RegisterCom from "../components/RegisterCom";
 import validateProfileSchema from "../validation/ProfilePageValidation";
 
@@ -19,11 +17,6 @@ const Profail = () => {
   useEffect(() => {
     (async () => {
       try {
-        /* const errors = validateRegisterSchema({ id });
-        if (errors) {
-          navigate("*");
-          return;
-        } */
         const { data } = await axios.get("/auth/users/" + id);
         let newInputState = {
           ...data,
@@ -46,14 +39,12 @@ const Profail = () => {
     try {
       const joiResponse = validateProfileSchema(inputState);
       setinputsErrorState(joiResponse);
-      if (!joiResponse) console.log(joiResponse);{
+      if (!joiResponse){
         await axios.put("/auth/users/" + id, inputState);
-
         toast.success("The change was successfully saved");
         navigate(ROUTES.LOGIN);
       }
     } catch (err) {
-      console.log("err", err);
       toast.error("There is an error," + "" + err.response.data.message);
     }
   };

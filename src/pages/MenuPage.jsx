@@ -1,16 +1,10 @@
 import {
   Button,
-  Card,
-  Col,
   Container,
-  Form,
-  Image,
-  ListGroup,
-  Nav,
   Row,
   Spinner,
 } from "react-bootstrap";
-import { BsCardHeading, BsCurrencyDollar, BsListUl } from "react-icons/bs";
+import { BsCardHeading, BsListUl } from "react-icons/bs";
 import CardMenu from "../components/CardMenu";
 import { toast } from "react-toastify";
 import useQueryParams from "../hooks/useQueryParams";
@@ -23,22 +17,16 @@ import ButtonCreatCom from "../components/ButtonCreatCom";
 import CompletionOfAnOrder from "../components/OrderSummaryCom";
 import "../css/menu.css";
 import "../css/pages.css";
-import ImagePopup from "../components/ImagePopup";
 
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [orderIdMenu, setOrderIdMenu] = useState(null);
   const [listOrCard, setListOrCard] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
-
-  const isLoggedIn = useSelector(
-    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
-  );
   const id = jwt_decode(localStorage.token)._id;
 
   useEffect(() => {
@@ -71,30 +59,21 @@ const MenuPage = () => {
     let filter = "";
     if (qparams.filter) {
       filter = qparams.filter;
-      console.log(filter);
     }
     if (!originalCardsArr && data) {
-      /*
-      when component loaded and states not loaded
-      */
       setOriginalCardsArr(data);
       setCardsArr(
         data.filter(
           (card) => card.title.startsWith(filter)
-          // || card.bizNumber.startsWith(filter)
         )
       );
       return;
     }
     if (originalCardsArr) {
-      /*
-        when all loaded and states loaded
-        */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
         newOriginalCardsArr.filter(
           (card) => card.title.startsWith(filter)
-          // || card.bizNumber.startsWith(filter)
         )
       );
     }
@@ -115,7 +94,6 @@ const MenuPage = () => {
     }
   };
   const handleEditFromInitialCardsArr = (id) => {
-    console.log("captor");
     const cardToEdit = cardsArr.find((card) => card._id == id);
     navigate(`/edit/${id}`, { state: { user_id: cardToEdit.user_id } });
   };
@@ -123,15 +101,12 @@ const MenuPage = () => {
   if (!cardsArr) {
     return <Spinner animation="border" role="status"></Spinner>;
   }
-  const deleteHome = () => {};
+
 
   const handelListOrCard = () => {
     setListOrCard(!listOrCard);
   };
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-  };
   const categories = [
     "Main dishes",
     "Salads",
@@ -141,7 +116,7 @@ const MenuPage = () => {
   const filterItemsByCategory = (category) => {
     return cardsArr.filter((item) => item.category === category);
   };
-console.log("cardsArr",cardsArr);
+
   return (
     <Container>
       <Button
@@ -182,8 +157,6 @@ console.log("cardsArr",cardsArr);
         </Row>
       </div>
       <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
-
-      {/* <ButtonCreatCom /> */}
     </Container>
   );
 };

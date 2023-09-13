@@ -13,9 +13,6 @@ const ROUTES = {
   BOOKTABLE:"/book-Table",
   CONTACT:"/contact",
   PROFAIL:"/profail"
-  // EDIT:"/edit",
-  //   PROFILE: "/profile",
-  //   FAVCARD:"/favCards"
 };
 
 export default ROUTES;

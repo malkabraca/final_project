@@ -95,8 +95,6 @@ const MyOrder = () => {
   };
 
   const keys = Object.keys(order);
-  console.log(cardsArr);
-  console.log("menuOrder", menuOrder);
   
   return (
     <Container>
@@ -204,16 +202,6 @@ const MyOrder = () => {
            ) : (
             ""
           )}
-        {/* <Col md={{ span: 6, offset: 4 }} xs={12}>
-          <Button
-            variant="warning"
-            type="submit"
-            onClick={handleCancelBtnClick}
-            className="colinput"
-          >
-            GO TO HOME PAGE
-          </Button>
-        </Col> */}
       </Col>
       <Col>
         <Row className="mb-3">

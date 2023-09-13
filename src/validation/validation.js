@@ -6,7 +6,7 @@ const validation = (schema, userInput) => {
     
     return null;
   }
-  const { details } = error; // const details = error.details
+  const { details } = error; 
   for (let item of details) {
     if (!errorObjArr[item.context.key]) {
     

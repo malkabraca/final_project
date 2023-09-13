@@ -9,12 +9,10 @@ import CreateCardPage from "../pages/CreateCardPage";
 import CRMPage from "../pages/crmPage";
 import AboutPage from "../pages/AboutPage";
 import ProtectedRoute from "../components/ProtectedRoute";
-import LogoutPage from "../pages/LogoutPage";
 import MenuLogoutPage from "../pages/NoLoginMenuPage";
 import PaymentForm from "../components/PaymentForm";
 import MyOrder from "../pages/MyOrder";
 import SuperProtectedRoute from "../components/SuperProtectedRoute";
-import SuperProtectedRouteEdit from "../components/SuperProtectedRouteEdit";
 import Contact from "../pages/Contact";
 import Profail from "../pages/Profail";
 import OrderDetails from "../pages/OrderDetails";
@@ -60,73 +58,7 @@ const Router = () => {
         }
       />
       <Route path="*" element={<h1>404</h1>} />
-      {/* <Route path={ROUTES.PAYMENT} element={<PaymentForm />} /> */}
-      {/* <Route path={ROUTES.CREATE} element={<CreateCardPage />} /> */}
-      {/* <Route path="/edit/:id" element={<EditCardPage />} /> */}
-      {/* <Route path={ROUTES.MYORDER} element={<MyOrder />} /> */}
-      {/* <Route path={ROUTES.CRM} element={<CRMPage />} /> */}
     </Routes>
-
-    //       <Route path={ROUTES.ABOUT} element={<About />} />
-    //       <Route  path="infor/:id" element={<InformationCard />} />
-
-    //       <Route
-    //         path={ROUTES.FAVCARD}
-    //         element={<ProtectedRoute element={<FavCardsPage />} />}
-    //       />
-    //       <Route
-    //         path={ROUTES.PROFILE}
-    //         element={<ProtectedRoute element={<ProfilePage />} />}
-    //       />
-    // <Route
-    //   path="/myCards"
-    //   element={
-    //     <SuperProtectedRoute
-    //       isAdmin={true}
-    //       isBiz={true}
-    //       element={<MyCards />}
-    //     />
-    //   }
-    // />
-    // <Route
-    //   path="/edit/:id"
-    //   element={
-    //     <SuperProtectedRouteEdit
-    //       isAdmin={true}
-    //       isBiz={true}
-    //       element={<EditCardPage />}
-    //     />
-    //   }
-    // />
-    //       <Route
-    //         path={ROUTES.CREATE}
-    //         element={
-    //           <SuperProtectedRoute
-    //             isAdmin={true}
-    //             isBiz={true}
-    //             element={<CreateCardPage />}
-    //           />
-    //         }
-    //       />
-    //       <Route
-    //         path="/sandBox"
-    //         element={
-    //           <SuperProtectedRoute
-    //             isAdmin={true}
-    //             isBiz={false}
-    //             element={<SandBox />}
-    //           />
-    //         }
-    //       >
-    //         <Route path="nestedpage1" element={<NestedPage1 />} />
-    //         <Route path="nestedpage2" element={<NestedPage2 />} />
-    //         <Route path="RP1" element={<RP1 />} />
-    //         <Route path="RP2" element={<RP2 />} />
-
-    //       </Route>
-
-    //       <Route path="*" element={<h1>404</h1>} />
-    // </Routes>
   );
 };
 

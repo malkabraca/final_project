@@ -5,11 +5,9 @@ import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
 
 const SuperProtectedRouteEdit = ({ element, isAdmin, isBiz }) => {
-  //* logic section
   const isLoggedIn = useSelector((bigState) => bigState.authSlice.isLoggedIn);
   const payload = useSelector((bigState) => bigState.authSlice.payload);
   const location = useLocation();
-  //* html section
   if (isLoggedIn) {
     if (
       (isAdmin && payload && payload.isAdmin) ||

@@ -16,7 +16,7 @@ import validateEditSchema, {
   validateEditCardParamsSchema,
 } from "../validation/editCardValidation";
 import EditCardMenoCom from "../components/EditCardMenoCom";
-//   import CreateEditComponent from "../components/CreateAndEditComponent";
+
 
 const EditCardPage = () => {
   const { id } = useParams();
@@ -35,20 +35,9 @@ const EditCardPage = () => {
         let newInputState = {
           ...data,
         };
-        // if (data.image && data.image.url) {
-        //   newInputState.url = data.image.url;
-        // } else {
-        //   newInputState.url = "";
-        // }
-        // if (data.image && data.image.alt) {
-        //   newInputState.alt = data.image.alt;
-        // } else {
-        //   newInputState.alt = "";
-        // }
         delete newInputState.likes;
         delete newInputState._id;
         delete newInputState.user_id;
-        // delete newInputState.bizNumber;
         delete newInputState.createdAt;
         delete newInputState.__v;
         setInputState(newInputState);

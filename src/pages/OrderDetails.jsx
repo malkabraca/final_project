@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -11,18 +10,16 @@ import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import TableOrder from "../components/TableOrder";
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
 const OrderDetails = () => {
   const [menuOrder, setMenuOrder] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [totalSum, setTotalSum] = useState(0);
-  const [from, setFrom] = useState(false);
   const { id } = useParams();
   const [order, setOrder] = useState(null);
   const navigate = useNavigate();
 
-  // /orders/orderStatus/crm/:id
+
 
   useEffect(() => {
     (async () => {
@@ -80,7 +77,6 @@ const OrderDetails = () => {
   }, [cardsArr]);
 
   if (!order) {
-    // navigate(ROUTES.HOME);
     return <Spinner animation="grow" variant="warning" className="spiner" />;
   }
 
@@ -88,15 +84,13 @@ const OrderDetails = () => {
     navigate(ROUTES.CRM);
   };
   const keys = Object.keys(order);
-  // console.log("cardsArr",cardsArr);
-  // console.log("order",order);
+
 
   const onChangeOrderStatusTrue = async()=>{
     try{
       await axios.patch("/orders/orderStatus/crmt/" + id);
     }
     catch(err){
-      console.log(err.response);
       toast.error(err.response.data);
     }
   }
@@ -105,7 +99,6 @@ const OrderDetails = () => {
       await axios.patch("/orders/orderStatus/crmf/" + id);
     }
     catch(err){
-      console.log(err.response);
       toast.error(err.response.data);
     }
   }
@@ -166,9 +159,6 @@ const OrderDetails = () => {
           </tr>
         </tbody>
       </Table>
-      {/*  ) : (
-        ""
-      )} */}
       <Col>
         <Row className="mb-3">
           <Button

@@ -1,6 +1,6 @@
 import Recommendation from "../components/popupRecom";
-import { BsArrowDown, BsChevronDoubleDown } from "react-icons/bs";
-import { Col, Row, Form, Container, FloatingLabel,Button } from "react-bootstrap";
+import { BsChevronDoubleDown } from "react-icons/bs";
+import { Col, Row, Form, Container,Button } from "react-bootstrap";
 import { useState } from "react";
 import validateContactSchema from "../validation/contact";
 import { toast } from "react-toastify";
@@ -14,11 +14,9 @@ const Contact = () => {
     phone: "",
     message: "",
   });
-  console.log("inputState", inputState);
 
   const [inputsErrorState, setInputsErrorState] = useState(null);
   const joiResponse = validateContactSchema(inputState);
-  console.log("inputsErrorState", inputsErrorState);
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
