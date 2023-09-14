@@ -7,7 +7,7 @@ import {
 } from "react-bootstrap";
 import ImagePopup from "./ImagePopup";
 import { BsCurrencyDollar } from "react-icons/bs";
-
+import "../css/media.css";
 const MenuLogoutCom = ({
   id,
   orderId,

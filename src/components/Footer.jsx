@@ -4,15 +4,13 @@ import {
   BsEnvelopeAt,
   BsGeoAlt,
   BsStopwatch,
-  BsTelephone,
   BsWhatsapp,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "../css/navbar&foter.css";
-
+import "../css/media.css";
 const handleClick = () => {
   const whatsappNumber = "+972502800840";
 

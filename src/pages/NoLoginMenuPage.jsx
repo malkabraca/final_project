@@ -95,17 +95,10 @@ const MenuLogoutPage = () => {
         {listOrCard ? <BsCardHeading /> : <BsListUl />}
       </Button>
       <h1 className="title"> Menu</h1>
+      <PopupExample variant="warning" onClick={handleButtonClick} />
       <Nav variant="underline" defaultActiveKey="/home" className="nav_catgory">
         <Nav.Item className="nav_item_catgory">
           <Nav.Link  eventKey="link-1" onClick={() => handleCategoryClick(null)}>All</Nav.Link>
-        </Nav.Item>
-        <Nav.Item className="nav_item_catgory">
-          <Nav.Link
-            eventKey="link-2"
-            onClick={() => handleCategoryClick("drinking")}
-          >
-            drinking
-          </Nav.Link>
         </Nav.Item>
         <Nav.Item className="nav_item_catgory">
           <Nav.Link
@@ -121,6 +114,14 @@ const MenuLogoutPage = () => {
             onClick={() => handleCategoryClick("Salads")}
           >
            Salads
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="nav_item_catgory">
+          <Nav.Link
+            eventKey="link-2"
+            onClick={() => handleCategoryClick("drinking")}
+          >
+            drinking
           </Nav.Link>
         </Nav.Item>
       </Nav>
@@ -163,7 +164,6 @@ const MenuLogoutPage = () => {
             </div>
           ))}  
       </Row>
-      <PopupExample variant="warning" onClick={handleButtonClick} />
     </Container>
   );
 };

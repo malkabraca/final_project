@@ -6,25 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "../src/css/App.css";
 import Router from "./routes/Router";
-import { useSelector } from "react-redux";
 import useLoggedIn from "./hooks/useLoggedIn";
 import Navbarpage from "./components/Navbar";
-import { Container, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import Footer from "./components/Footer";
 import { ThemeProvider } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// const light = {
-//   palette: {
-//     mode: "light",
-//   },
-// };
-
-// const dark = {
-//   palette: {
-//     mode: "dark",
-//   },
-// };
 
 
 function App() {
@@ -37,16 +25,8 @@ function App() {
     })();
   }, []);
 
-  const isDarkTheme = useSelector(
-    (bigPie) => bigPie.darkThemeSlice.isDarkTheme
-  );
-  const theme = {
-    primaryColor: isDarkTheme ? 'var(--secondary-color)' : 'var(--primary-color)',
-    // Add other theme properties here
-  };
   return (
-    // <ThemeProvider theme={isDarkTheme ?  'var(--secondary-color)'  : 'var(--primary-color)' }>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider >
       <div>
         <ToastContainer
           position="top-center"

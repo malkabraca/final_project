@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/navbar&foter.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -9,6 +9,7 @@ import { authActions } from "../store/auth";
 import SearchPartial from "./SearchPartial";
 import { Link } from "react-router-dom";
 import ImageNavbar from "./ImageNavbar";
+import "../css/media.css";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -42,16 +43,17 @@ const Navbars = () => {
                 id="nav"
                 to={ROUTES.HOME}
                 onClick={handleLinkClick}
+                className={activeLink === "Home" ? "active" : ""}
               >
                 Home
               </Link>
             </Nav>
-
             <Nav className={"navLink"}>
               <Link
                 id="nav"
                 to={ROUTES.ABOUT}
                 onClick={handleLinkClick}
+                className={activeLink === "About" ? "active" : ""}
               >
                 About
               </Link>
@@ -61,6 +63,7 @@ const Navbars = () => {
                 id="nav"
                 to={ROUTES.CONTACT}
                 onClick={handleLinkClick}
+                className={activeLink === "Contact" ? "active" : ""}
               >
                 Contact
               </Link>
@@ -71,20 +74,22 @@ const Navbars = () => {
                   id="nav"
                   to={ROUTES.MENULOGUT}
                   onClick={handleLinkClick}
+                  className={activeLink === "Menu" ? "active" : ""}
                 >
-                  General-Menu
+                Menu
                 </Link>
               </Nav>
             ) : (
               ""
             )}
 
-            {isLoggedIn ? (
+            {isLoggedIn && !(payload.isAdmin) ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
                   to={ROUTES.MENULOGUT}
                   onClick={handleLinkClick}
+                  className={activeLink === "Menu" ? "active" : ""}
                 >
                   Menu
                 </Link>
@@ -99,6 +104,7 @@ const Navbars = () => {
                   id="nav"
                   to={ROUTES.MYORDER}
                   onClick={handleLinkClick}
+                  className={activeLink === "My Order" ? "active" : ""}
                 >
                   My Order
                 </Link>
@@ -106,26 +112,13 @@ const Navbars = () => {
             ) : (
               ""
             )}
-            {isLoggedIn ? (
-              <Nav className={"navLink"}>
-                <Link
-                  id="nav"
-                  to={ROUTES.LOGOUT}
-                  onClick={logoutClick}
-                >
-                  Logout
-                </Link>
-              </Nav>
-            ) : (
-              ""
-            )}
-
             {!isLoggedIn ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
                   to={ROUTES.LOGIN}
                   onClick={handleLinkClick}
+                  className={activeLink === "Login" ? "active" : ""}
                 >
                   Login
                 </Link>
@@ -139,6 +132,7 @@ const Navbars = () => {
                   id="nav"
                   to={ROUTES.REGISTER}
                   onClick={handleLinkClick}
+                  className={activeLink === "Register" ? "active" : ""}
                 >
                   Register
                 </Link>
@@ -146,15 +140,43 @@ const Navbars = () => {
             ) : (
               ""
             )}
-
             {isLoggedIn && payload.isAdmin ? (
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.MENU}
+                  onClick={handleLinkClick}
+                  className={activeLink === "Menu" ? "active" : ""}
+                >
+               Menu
+                </Link>
+              </Nav>
+            ) : (
+              ""
+            )}
+                 {isLoggedIn && payload.isAdmin ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
                   to={ROUTES.CRM}
                   onClick={handleLinkClick}
+                  className={activeLink === "CRM" ? "active" : ""}
                 >
                   CRM
+                </Link>
+              </Nav>
+            ) : (
+              ""
+            )}
+                {isLoggedIn ? (
+              <Nav className={"navLink"}>
+                <Link
+                  id="nav"
+                  to={ROUTES.LOGOUT}
+                  onClick={logoutClick}
+                  className={activeLink === "Logout" ? "active" : ""}
+                >
+                  Logout
                 </Link>
               </Nav>
             ) : (

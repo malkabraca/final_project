@@ -9,6 +9,7 @@ import "../css/crm&pay.css";
 import TableOrderCRM from "../components/TableOrderCRM";
 import TableUsers from "../components/TableUsersCRM";
 import { useNavigate } from "react-router-dom";
+import ROUTES from "../routes/ROUTES";
 const CRMPage = () => {
   const [order, setOrder] = useState();
   const [table, setTable] = useState();
@@ -17,6 +18,7 @@ const CRMPage = () => {
   const [ordersView, setordersView] = useState(true);
   const [tableView, setTableView] = useState(true);
   const navigate = useNavigate();
+
   const handelusersView = () => {
     setUsersView(true);
     setordersView(false);
@@ -77,11 +79,30 @@ const CRMPage = () => {
       toast.error(err.response);
     }
   };
- 
+  const handleDelete= async (id) => {
+    try {
+      await axios.patch("/auth/users/" + id);
+      setUsers((newUsersArr) =>
+      newUsersArr.filter((item) => item._id !== id)
+      );
+      toast.success("The user has been deleted from the system");
+    } catch (err) {
+      toast.error("It happened that an undeleted user arrived");
+    }
+  };
   const handleInfoCrm = (id) => {
     navigate(`/crm/${id}`);
   };
-
+const handleEdit = async (id) => {
+  try {
+    await axios.patch("/auth/users/" + id);
+     window.location.reload();
+    toast.success("The user has been deleted from the system");
+  } catch (err) {
+    console.log(err);
+    toast.error("It happened that an undeleted user arrived");
+  }
+};
   return (
     <Container>
       <h1 className="title">CRM</h1>
@@ -192,11 +213,13 @@ const CRMPage = () => {
           <tr className="crmHeader">
             <th>Name</th>
             <th>Phone</th>
-            <th>Email</th>
+            <th className="medieCrm">Email</th>
             <th className="medieCrm">City</th>
             <th className="medieCrm">Street</th>
-            <th className="medieCrm">HouseNumber</th>
+            <th className="medieCrm">House Number</th>
             <th className="medieCrm">CreatedAt</th>
+            <th >Is Admin</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody className="tablacrm">
@@ -204,6 +227,7 @@ const CRMPage = () => {
             users.map((item) => (
               <TableUsers
                 key={item._id + Date.now()}
+                id={item._id}
                 name={item.firstName + " " + item.lastName}
                 phone={item.phone}
                 email={item.email}
@@ -211,6 +235,9 @@ const CRMPage = () => {
                 street={item.street}
                 houseNumber={item.houseNumber}
                 createdAt={item.createdAt}
+                isAdmin={item.isAdmin}
+                onDelete={handleDelete}
+                onEdit={handleEdit}  
               />
             ))}
         </tbody>

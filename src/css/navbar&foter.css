@@ -46,25 +46,14 @@
 .center-content {
   text-align: center;
 }
-.whatsapp_footer {
-  width: 30px;
-  height: 30px;
-  color: rgb(5, 122, 5);
-}
+
 .active {
-  /* color: aliceblue; */
-  /*  background-color: #da6161;  */
-  /*  background-color: rgb(252, 215, 94); */
-  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
-
-  border-bottom: 4px solid rgba(253, 104, 119, 0.93);
-  /*  border-color: rgba(253, 104, 119, 0.93); 
-     border-bottom-left-radius:  ; */
+  text-shadow: -3px -3px 4px  rgba(249, 46, 46, 0.93);
 }
 
-/* .navbar .nav-link.active {
-  color: blue;
-} */
+#nav:hover {
+  text-shadow: -3px -3px 4px  rgba(249, 46, 46, 0.93);
+}
 
 .profile-picture-container {
   display: flex;

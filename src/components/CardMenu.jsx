@@ -1,13 +1,4 @@
-import {
-  Button,
-  Col,
-  Form,
-  ListGroup,
-  Row,
-  Card,
-  Image,
-} from "react-bootstrap";
-import ImagePopup from "./ImagePopup";
+import { Button, Card, Col, Image } from "react-bootstrap";
 import {
   BsCurrencyDollar,
   BsFillCaretDownFill,
@@ -18,31 +9,32 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-
+import "../css/media.css";
 const CardMenu = ({
   id,
+  canEd,
   orderId,
   imageUrl,
   title,
   description,
   price,
-  imageAlt,
   onDelete,
   onEdit,
   canEdit,
   canDelete,
-  canEd,
-  listOrCard,
+ 
 }) => {
   const [amount, setaAmount] = useState(1);
   const [isFilled, setIsFilled] = useState(false);
-
 
   useEffect(() => {
     handleDes();
   }, []);
 
   const handleDes = async () => {
+    if (canDelete) {
+      return;
+    }
     try {
       const orderdis = await axios.get("/orders/" + orderId);
       const foundItem = orderdis.data.menuOrder.find((item) => item[1] === id);
@@ -78,190 +70,87 @@ const CardMenu = ({
     setaAmount((amount) => amount + 1);
   };
   const handleMinoc = () => {
-    if (amount == 1) {
+    if (amount === 1) {
       return;
     }
     setaAmount((amount) => amount - 1);
   };
-  const handleButtonClick = () => {
-    setIsFilled(!isFilled);
-  };
-
   return (
-    <Col xs={12} md={12}>
-      {listOrCard ? (
-        <Form.Group as={Col}>
-          <ListGroup className="alert">
-            <div className="product-list">
-              <div key={id} className="product-item">
-                <ImagePopup imageUrl={imageUrl} alt={imageAlt} />
-                <div className="product-details">
-                  <h3>{title}</h3>
-                  <h6>{description}</h6>
-                  <h5>
-                    {price}
-                    <BsCurrencyDollar />
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div className="buttons-wrappera">
-              <div className="buttons-wrapper">
-                {canEd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu"
-                    onClick={handlePlos}
-                  >
-                    <BsFillCaretUpFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
+    <Col xs={12} md={6}>
+      <Card className="cardMenu" as={Col}>
+        <Image src={imageUrl} roundedCircle className="img_title" />
+        <Card.Body className="cardBody">
+          <Card.Title className="card_title">{title}</Card.Title>
+          <Card.Text className="card_text">{description}</Card.Text>
+          <h5 className="card_price">
+            {price}
+            <BsCurrencyDollar />
+          </h5>
+          {canDelete && (
+            <Button
+              variant="warning"
+              onClick={handleDeleteBtnClick}
+              className="buttenDelEdiMenu"
+            >
+              <BsTrashFill />
+            </Button>
+          )}
+          {canEdit && (
+            <Button
+              variant="warning"
+              onClick={handleEditBtnClick}
+              className="buttenDelEdiMenu"
+            >
+              <BsPencilFill />
+            </Button>
+          )}
+          {canEd ? (
+            <Button
+              variant="warning"
+              className="buttenAddMenu cardButten"
+              onClick={handlePlos}
+            >
+              <BsFillCaretUpFill />
+            </Button>
+          ) : (
+            ""
+          )}
+          {canEd ? (
+            <Button
+              variant="warning"
+              className="buttenAddMenu cardButten"
+              onClick={handleAddToOrder}
+            >
+              {amount}
+            </Button>
+          ) : (
+            ""
+          )}
 
-                {canEd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu"
-                    /* onClick={handleAddToOrder} */
-                  >
-                    {amount}
-                  </Button>
-                ) : (
-                  ""
-                )}
-
-                {canEd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu"
-                    onClick={handleMinoc}
-                  >
-                    <BsFillCaretDownFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="buttons-wrapper">
-                {canEd ? (
-                  <Button
-                    variant="warning"
-                    onClick={handleAddToOrder}
-                    className={isFilled ? "alertlink filled" : "alertlink"}
-                    /*  href="#" */
-                  >
-                    {isFilled ? "Added to order" : "Add to order"}
-                  </Button>
-                ) : (
-                  ""
-                )}
-              </div>
-              <Row>
-                {canDelete ? (
-                  <Button
-                    variant="warning"
-                    className="buttenDelEdiMenu"
-                    onClick={handleDeleteBtnClick}
-                  >
-                    <BsTrashFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
-                {canEdit ? (
-                  <Button
-                    variant="warning"
-                    className="buttenDelEdiMenu"
-                    onClick={handleEditBtnClick}
-                  >
-                    <BsPencilFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
-              </Row>
-            </div>
-          </ListGroup>
-        </Form.Group>
-      ) : (
-        <Form.Group as={Col} md={6}>
-          <Card className="cardMenu">
-            <Image src={imageUrl} roundedCircle className="img_title" />
-            <Card.Body className="cardBody">
-              <Card.Title className="card_title">{title}</Card.Title>
-              <Card.Text className="card_text">{description}</Card.Text>
-              <h5 className="card_price">
-                {price}
-                <BsCurrencyDollar />
-              </h5>
-              {canDelete && (
-                <Button
-                  variant="warning"
-                  onClick={handleDeleteBtnClick}
-                  className="buttenDelEdiMenu"
-                >
-                  <BsTrashFill />
-                </Button>
-              )}
-              {canEdit && (
-                <Button
-                  variant="warning"
-                  onClick={handleEditBtnClick}
-                  className="buttenDelEdiMenu"
-                >
-                  <BsPencilFill />
-                </Button>
-              )}
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handlePlos}
-                >
-                  <BsFillCaretUpFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handleAddToOrder}
-                >
-                  {amount}
-                </Button>
-              ) : (
-                ""
-              )}
-
-              {canEd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handleMinoc}
-                >
-                  <BsFillCaretDownFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canEd && (
-                <Button
-                  variant="warning"
-                  onClick={handleAddToOrder}
-                  className={isFilled ? "alertlink filled" : "alertlink"}
-                  href="#"
-                  id="cardButten"
-                >
-                  {isFilled ? "Added to order" : "Add to order"}
-                </Button>
-              )}
-            </Card.Body>
-          </Card>
-        </Form.Group>
-      )}
+          {canEd ? (
+            <Button
+              variant="warning"
+              className="buttenAddMenu cardButten"
+              onClick={handleMinoc}
+            >
+              <BsFillCaretDownFill />
+            </Button>
+          ) : (
+            ""
+          )}
+          {canEd && (
+            <Button
+              variant="warning"
+              onClick={handleAddToOrder}
+              className={isFilled ? "alertlink filled" : "alertlink"}
+              href="#"
+              id="cardButten"
+            >
+              {isFilled ? "Added to order" : "Add to order"}
+            </Button>
+          )}
+        </Card.Body>
+      </Card>
     </Col>
   );
 };
