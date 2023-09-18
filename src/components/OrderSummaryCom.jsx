@@ -29,7 +29,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
       const completion = orders.data.menuOrder;
       return completion;
     } catch (err) {
-      toast.error(err.response._id);
+      toast.error("Error, no reservation exists");
     }
   };
 
@@ -49,7 +49,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
       });
       setCardsArr(card);
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Reached, please try again");
     }
   };
  

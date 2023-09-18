@@ -42,7 +42,7 @@ const EditCardPage = () => {
         delete newInputState.__v;
         setInputState(newInputState);
       } catch (err) {
-        toast.error("There is an error," + "" + err.response.data);
+        toast.error("Error The card does not exist");
       }
     })();
   }, [id]);
@@ -58,7 +58,7 @@ const EditCardPage = () => {
       }
     } catch (err) {
       console.log(err.response.data);
-      toast.error("There is an error," + "" + err.response.data.msg);
+      toast.error("Error, card cannot be edited");
     }
   };
 

@@ -52,7 +52,7 @@ const MenuComponent = ({
         setIsFilled(!isFilled);
       }
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Error, no reservation exists");
     }
   };
 
@@ -64,7 +64,7 @@ const MenuComponent = ({
         amount: amount,
       });
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Error, item not added to order");
     }
   };
   const handleDeleteBtnClick = () => {

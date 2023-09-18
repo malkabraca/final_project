@@ -34,7 +34,7 @@ const LoginPage = () => {
       loggedIn();
       navigate(ROUTES.HOME); 
     } catch (err) {
-      toast.error("There is an error,"+ err.response.data.msg); 
+      toast.error("There is an error,Incorrect email or password"); 
      
     }
     }

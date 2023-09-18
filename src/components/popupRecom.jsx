@@ -33,7 +33,7 @@ const Recommendation = () => {
         const nameUser = userid.firstName + " " + userid.lastName;
         setname(nameUser);
       } catch (err) {
-        toast.error("There is an error," + "" + err.response.data);
+        toast.error("There is an error,There is an error, you need to register and log in to the site");
       }
     })();
   }, []);
@@ -42,8 +42,9 @@ const Recommendation = () => {
     try {
       await axios.patch("/auth/users/contact/" + id, inputState);
       handleClose();
+      toast.success("Your recommendation has been taken into the system, thank you very much!❤️🤩");
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Your recommendation was not received in the system, please try again");
     }
   };
 

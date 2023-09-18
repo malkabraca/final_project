@@ -41,7 +41,7 @@ const MyOrder = () => {
         delete order.menuOrder;
         setOrder(order);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Arrived, order not found");
       }
     })();
   }, [id]);
@@ -63,7 +63,7 @@ const MyOrder = () => {
           });
         setCardsArr(card);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Server Reached Please try again");
       }
     };
     getOrderData();

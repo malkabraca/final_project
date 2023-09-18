@@ -41,7 +41,7 @@ const CRMorder = () => {
         delete order.menuOrder;
         setOrder(order);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Error, user does not exist or is not an admin");
       }
     })();
   }, [id]);
@@ -63,7 +63,7 @@ const CRMorder = () => {
           });
         setCardsArr(card);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Server Reached Please try again later");
       }
     };
     getOrderData();

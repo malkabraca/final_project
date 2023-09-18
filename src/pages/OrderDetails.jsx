@@ -36,7 +36,7 @@ const OrderDetails = () => {
         delete order.OrderMenu;
         setOrder(order);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Error, order not found");
       }
     })();
   }, [id]);
@@ -57,7 +57,7 @@ const OrderDetails = () => {
           });
         setCardsArr(card);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Server Reached Please try again");
       }
     };
     getOrderData();
@@ -91,7 +91,7 @@ const OrderDetails = () => {
       await axios.patch("/orders/orderStatus/crmt/" + id);
     }
     catch(err){
-      toast.error(err.response.data);
+      toast.error("Error, order status not changed");
     }
   }
   const onChangeOrderStatusFalse = async()=>{
@@ -99,7 +99,7 @@ const OrderDetails = () => {
       await axios.patch("/orders/orderStatus/crmf/" + id);
     }
     catch(err){
-      toast.error(err.response.data);
+      toast.error("Error, order status not changed");
     }
   }
   return (

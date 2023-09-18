@@ -31,7 +31,7 @@ const MenuPage = () => {
         const order = await axios.get("/orders/my-order-findOne/" + id);
         setOrderIdMenu(order.data);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Error, order not found");
       }
     };
     withdrawalOfOrderId();
@@ -85,7 +85,7 @@ const MenuPage = () => {
         newCardsArr.filter((item) => item._id !== id)
       );
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Error, item not deleted Please try again");
     }
   };
   const handleEditFromInitialCardsArr = (id) => {

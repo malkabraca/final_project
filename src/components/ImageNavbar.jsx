@@ -28,7 +28,7 @@ const ImageNavbar =()=>{
             const urlUser = userid.imageUrl;
             setImag(urlUser);
           } catch (err) {
-            toast.error(err.response.data);
+            toast.error("Error, unable to receive user image");
           }
         })();
     }, [payload]);

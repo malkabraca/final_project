@@ -35,7 +35,7 @@ const PaymentForm = () => {
         const order = await axios.get("/orders/my-order-findOne/" + id);
         setOrderId(order.data);
       } catch (err) {
-        toast.error(err.response._id);
+        toast.error("Error, no reservation exists");
       }
     };
     withdrawalOfOrderId();
@@ -47,7 +47,7 @@ const PaymentForm = () => {
       toast.success("An order is currently in the works");
       navigate(ROUTES.HOME)
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Error, no reservation exists");
     }
   };
 

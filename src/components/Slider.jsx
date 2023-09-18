@@ -18,7 +18,7 @@ const Slider = () => {
       const allUser = await axios.get("/auth/users");
       setInputState(allUser.data);
     } catch (err) {
-      toast.error(err.response);
+      toast.error("Server error please try again");
     }
   };
 

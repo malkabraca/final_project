@@ -50,7 +50,7 @@ const CRMPage = () => {
       const orders = await axios.get("/orders");
       setOrder(orders.data);
     } catch (err) {
-      toast.error(err.response);
+      toast.error("Server Reached Please try again later");
     }
   };
 
@@ -63,7 +63,7 @@ const CRMPage = () => {
       const tableOrders = await axios.get("/ordersTable");
       setTable(tableOrders.data);
     } catch (err) {
-      toast.error(err.response);
+      toast.error("Server Reached Please try again later");
     }
   };
 
@@ -76,7 +76,7 @@ const CRMPage = () => {
       const allUsers = await axios.get("/auth/users");
       setUsers(allUsers.data);
     } catch (err) {
-      toast.error(err.response);
+      toast.error("Server Reached Please try again later");
     }
   };
   const handleDelete= async (id) => {
