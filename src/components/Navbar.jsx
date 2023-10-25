@@ -7,17 +7,43 @@ import ROUTES from "../routes/ROUTES";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/auth";
 import SearchPartial from "./SearchPartial";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ImageNavbar from "./ImageNavbar";
 import "../css/media.css";
+import { BsCart } from "react-icons/bs";
+import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
+  const navigate = useNavigate();
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const dispatch = useDispatch();
+  const id = localStorage.token ? jwt_decode(localStorage.token)._id : null;
+  
+  const handleClick=async()=>{
+    try {
+      if (!payload) {
+        return;
+      }
+      const { data } = await axios.get("orders/my-allorder-findOne/" + id);
+      const status = data.orderStatus;
+      if (!status) {
+        navigate(ROUTES.MENU);
+      }
+      else{
+        toast.warning("Attention ❤️ An order is required");
+      }
+    } catch (err) {
+    toast.warning("Attention ❤️ An order is required");
+    }
+  }
+
+
 
   const logoutClick = () => {
     localStorage.clear();
@@ -76,14 +102,13 @@ const Navbars = () => {
                   onClick={handleLinkClick}
                   className={activeLink === "Menu" ? "active" : ""}
                 >
-                Menu
+                  Menu
                 </Link>
               </Nav>
             ) : (
               ""
             )}
-
-            {isLoggedIn && !(payload.isAdmin) ? (
+            {isLoggedIn && !payload.isAdmin ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
@@ -148,13 +173,13 @@ const Navbars = () => {
                   onClick={handleLinkClick}
                   className={activeLink === "Menu" ? "active" : ""}
                 >
-               Menu
+                  Menu
                 </Link>
               </Nav>
             ) : (
               ""
             )}
-                 {isLoggedIn && payload.isAdmin ? (
+            {isLoggedIn && payload.isAdmin ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
@@ -168,7 +193,7 @@ const Navbars = () => {
             ) : (
               ""
             )}
-                {isLoggedIn ? (
+            {isLoggedIn ? (
               <Nav className={"navLink"}>
                 <Link
                   id="nav"
@@ -183,12 +208,22 @@ const Navbars = () => {
               ""
             )}
           </Nav>
-          <SearchPartial />
           {isLoggedIn ? (
-            <ImageNavbar />
+            <Nav className={"navLink"}>
+              <Link
+                id="nav"
+                // to={ROUTES.MENU}
+                onClick={handleClick}
+                className={activeLink === "Menu" ? "active" : ""}
+              >
+                <BsCart />
+              </Link>
+            </Nav>
           ) : (
             ""
           )}
+          <SearchPartial />
+          {isLoggedIn ? <ImageNavbar /> : ""}
         </Navbar.Collapse>
       </Container>
     </Navbar>

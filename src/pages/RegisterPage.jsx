@@ -96,15 +96,6 @@ const RegisterPage = () => {
               />
             ))}
           </Row>
-          <Form.Group className="mb-3" id="formGridCheckbox">
-            <Form.Check
-              type="checkbox"
-              id="biz"
-              className="biz"
-              label="I want to receive updates and exclusive offers, plus a 5% discount on every order"
-              onClick={handleBizChange}
-            />
-          </Form.Group>
           <Row className="mb-3">
             <Button
               variant="warning"

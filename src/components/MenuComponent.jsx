@@ -43,6 +43,9 @@ const MenuComponent = ({
   }, []);
 
   const handleDes = async () => {
+    if (canDelete) {
+      return;
+    }
     try {
       const orderdis = await axios.get("/orders/" + orderId);
       const foundItem = orderdis.data.menuOrder.find((item) => item[1] === id);

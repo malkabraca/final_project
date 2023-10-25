@@ -15,9 +15,9 @@ const EditCardMenoCom = ({ item, inputState, onChange, inputsErrorState }) => {
         value={inputState ? inputState[item] : ""}
       >
         <option>category</option>
-        <option>Starters</option>
+        <option>Main dishes</option>
         <option>Salads</option>
-        <option >Three</option>
+        <option >drinking</option>
       </Form.Select>
     </Col>
   ) : (

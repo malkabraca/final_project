@@ -166,7 +166,7 @@ const MyOrder = () => {
               >
                 <BsArrowRightShort />
                 <BsArrowRightShort />
-                Continued
+                Dishes Ordered
                 <BsArrowLeftShort />
                 <BsArrowLeftShort />
               </Button>
