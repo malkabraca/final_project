@@ -57,5 +57,5 @@
     ]
   },
  
-  "proxy": "https://clint-dgar.onrender.com"
+  "proxy": "http://localhost:8181"
 }
