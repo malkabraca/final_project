@@ -56,5 +56,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8181"
+ 
+  "proxy": "https://clint-dgar.onrender.com"
 }
