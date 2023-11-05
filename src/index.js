@@ -22,7 +22,7 @@ import store from "./store/bigPie";
 import axios from "axios";
 
 /* axios */
-axios.defaults.baseURL = "https://kol-jf1c.onrender.com/api";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL+"/api";
 
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
